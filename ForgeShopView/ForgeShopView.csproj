@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,16 +47,79 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=5.11.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.3\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.3\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormBillet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormBillet.Designer.cs">
+      <DependentUpon>FormBillet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBillets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBillets.Designer.cs">
+      <DependentUpon>FormBillets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormBilletForgeProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBilletForgeProduct.Designer.cs">
+      <DependentUpon>FormBilletForgeProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateOrder.Designer.cs">
+      <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForgeProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForgeProduct.Designer.cs">
+      <DependentUpon>FormForgeProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormForgeProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormForgeProducts.Designer.cs">
+      <DependentUpon>FormForgeProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormBillet.resx">
+      <DependentUpon>FormBillet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBillets.resx">
+      <DependentUpon>FormBillets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateOrder.resx">
+      <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForgeProduct.resx">
+      <DependentUpon>FormForgeProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormBilletForgeProduct.resx">
+      <DependentUpon>FormBilletForgeProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormForgeProducts.resx">
+      <DependentUpon>FormForgeProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +129,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +142,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForgeShopBusinessLogic\ForgeShopBusinessLogic.csproj">
+      <Project>{a129dd55-7138-4012-b8a1-ce0660dd4f81}</Project>
+      <Name>ForgeShopBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForgeShopListImplement\ForgeShopListImplement.csproj">
+      <Project>{a9fecef2-ee03-43d0-b3f7-baa75f0d0450}</Project>
+      <Name>ForgeShopListImplement</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
