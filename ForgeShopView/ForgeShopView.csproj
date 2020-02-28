@@ -148,6 +148,10 @@
       <Project>{a129dd55-7138-4012-b8a1-ce0660dd4f81}</Project>
       <Name>ForgeShopBusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ForgeShopFileImplement\ForgeShopFileImplement.csproj">
+      <Project>{3d64fe2f-4881-4814-8e7e-ae52719c078c}</Project>
+      <Name>ForgeShopFileImplement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForgeShopListImplement\ForgeShopListImplement.csproj">
       <Project>{a9fecef2-ee03-43d0-b3f7-baa75f0d0450}</Project>
       <Name>ForgeShopListImplement</Name>
