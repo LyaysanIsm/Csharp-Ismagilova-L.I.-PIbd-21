@@ -10,12 +10,16 @@ namespace ForgeShopListImplement
         public List<Order> Orders { get; set; }
         public List<ForgeProduct> ForgeProducts { get; set; }
         public List<ForgeProductBillet> ForgeProductBillets { get; set; }
+        public List<Storage> Storages { get; set; }
+        public List<StorageBillet> StorageBillets { get; set; }
         private DataListSingleton()
         {
             Billets = new List<Billet>();
             Orders = new List<Order>();
             ForgeProducts = new List<ForgeProduct>();
             ForgeProductBillets = new List<ForgeProductBillet>();
+            Storages = new List<Storage>();
+            StorageBillets = new List<StorageBillet>();
         }
         public static DataListSingleton GetInstance()
         {
