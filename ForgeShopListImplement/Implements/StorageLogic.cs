@@ -5,6 +5,7 @@ using ForgeShopListImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ForgeShopListImplement.Implements
 {
@@ -156,6 +157,39 @@ namespace ForgeShopListImplement.Implements
                 }
             }
             throw new Exception("Элемент не найден");
+        }
+        public bool CheckBilletsAvailability(int ForgeProductId, int ForgeProductsCount)
+        {
+            bool result = true;
+            var ForgeProductBillets = source.ForgeProductBillets.Where(x => x.ForgeProductId == ForgeProductId);
+            if (ForgeProductBillets.Count() == 0) return false;
+            foreach (var elem in ForgeProductBillets)
+            {
+                int count = 0;
+                var storageBillets = source.StorageBillets.FindAll(x => x.BilletId == elem.BilletId);
+                count = storageBillets.Sum(x => x.Count);
+                if (count < elem.Count * ForgeProductsCount)
+                    return false;
+            }
+            return result;
+        }
+        public void RemoveFromStorage(int ForgeProductId, int ForgeProductsCount)
+        {
+            var ForgeProductBillets = source.ForgeProductBillets.Where(x => x.ForgeProductId == ForgeProductId);
+            if (ForgeProductBillets.Count() == 0) return;
+            foreach (var elem in ForgeProductBillets)
+            {
+                int left = elem.Count * ForgeProductsCount;
+                var storageBillets = source.StorageBillets.FindAll(x => x.BilletId == elem.BilletId);
+                foreach (var rec in storageBillets)
+                {
+                    int toRemove = left > rec.Count ? rec.Count : left;
+                    rec.Count -= toRemove;
+                    left -= toRemove;
+                    if (left == 0) break;
+                }
+            }
+            return;
         }
         public void FillStorage(StorageBilletBindingModel model)
         {

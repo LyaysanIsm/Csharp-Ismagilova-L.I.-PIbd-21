@@ -61,7 +61,8 @@ namespace ForgeShopFileImplement.Implements
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
-                ForgeProductName = GetForgeProductName(rec.ForgeProductId),
+                ForgeProductId = rec.ForgeProductId,
+                ForgeProductName = source.ForgeProducts.FirstOrDefault(x => x.Id == rec.ForgeProductId)?.ForgeProductName,
                 Count = rec.Count,
                 Sum = rec.Sum,
                 Status = rec.Status,
@@ -69,14 +70,6 @@ namespace ForgeShopFileImplement.Implements
                 DateImplement = rec.DateImplement
             })
             .ToList();
-        }
-
-        private string GetForgeProductName(int id)
-        {
-            string name = "";
-            var ForgeProduct = source.ForgeProducts.FirstOrDefault(x => x.Id == id);
-            name = ForgeProduct != null ? ForgeProduct.ForgeProductName : "";
-            return name;
         }
     }
 }

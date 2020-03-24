@@ -38,6 +38,10 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
+            if (!storageLogic.CheckBilletsAvailability(order.ForgeProductId, order.Count))
+            {
+                throw new Exception("На складах не хватает компонентов");
+            }
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
@@ -48,6 +52,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 DateImplement = DateTime.Now,
                 Status = OrderStatus.Выполняется
             });
+            storageLogic.RemoveFromStorage(order.ForgeProductId, order.Count);
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {
