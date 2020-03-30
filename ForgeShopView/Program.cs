@@ -31,6 +31,8 @@ HierarchicalLifetimeManager());
             currentContainer.RegisterType<IForgeProductLogic, ForgeProductLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<MainLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new
+HierarchicalLifetimeManager());
             return currentContainer;
         }
     }
