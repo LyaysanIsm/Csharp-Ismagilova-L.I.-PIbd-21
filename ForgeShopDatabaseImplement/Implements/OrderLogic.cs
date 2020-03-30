@@ -62,11 +62,15 @@ model.Id);
             using (var context = new ForgeShopDatabase())
             {
                 return context.Orders
-            .Include(rec => rec.ForgeProduct)
-            .Where(rec => model == null || rec.Id == model.Id)
+            .Where(
+                    rec => model == null
+                    || (rec.Id == model.Id && model.Id.HasValue)
+                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                )
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
+                ForgeProductId = rec.ForgeProductId,
                 ForgeProductName = rec.ForgeProduct.ForgeProductName,
                 Count = rec.Count,
                 Sum = rec.Sum,
