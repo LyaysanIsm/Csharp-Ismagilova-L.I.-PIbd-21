@@ -1,5 +1,6 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
 using ForgeShopBusinessLogic.BusinessLogics;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Windows.Forms;
 using Unity;
@@ -11,34 +12,21 @@ namespace ForgeShopView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly ReportLogic logic;
+
         public FormReportForgeProductBillets(ReportLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
         }
 
-        private void FormReportForgeProductBillets_Load(object sender, EventArgs e)
+        private void ButtonMake_Click(object sender, EventArgs e)
         {
             try
             {
-                var dict = logic.GetForgeProductBillet();
-                if (dict != null)
-                {
-                    dataGridView.Rows.Clear();
-                    foreach (var elem in dict)
-                    {
-                        dataGridView.Rows.Add(new object[] { elem.BilletName, "", ""
-});
-                        foreach (var listElem in elem.ForgeProducts)
-                        {
-                            dataGridView.Rows.Add(new object[] { "", listElem.Item1,
-listElem.Item2 });
-                        }
-                        dataGridView.Rows.Add(new object[] { "Итого", "", elem.TotalCount
-});
-                        dataGridView.Rows.Add(new object[] { });
-                    }
-                }
+                var dataSource = logic.GetForgeProductBillet();
+                ReportDataSource source = new ReportDataSource("DataSetForgeProductBillet", dataSource);
+                reportViewer.LocalReport.DataSources.Add(source);
+                reportViewer.RefreshReport();
             }
             catch (Exception ex)
             {
@@ -47,25 +35,23 @@ listElem.Item2 });
             }
         }
 
-        private void ButtonSaveToExcel_Click(object sender, EventArgs e)
+        private void ButtonToPdf_Click(object sender, EventArgs e)
         {
-            using (var dialog = new SaveFileDialog { Filter = "xlsx|*.xlsx" })
+            using (var dialog = new SaveFileDialog { Filter = "pdf|*.pdf" })
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        logic.SaveForgeProductBilletToExcelFile(new ReportBindingModel
+                        logic.SaveForgeProductsToPdfFile(new ReportBindingModel
                         {
-                            FileName = dialog.FileName
+                            FileName = dialog.FileName,
                         });
-                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                        MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                       MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

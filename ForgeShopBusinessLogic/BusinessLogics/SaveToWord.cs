@@ -32,17 +32,28 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                         JustificationValues = JustificationValues.Center
                     }
                 }));
-                foreach (var billet in info.Billets)
+                foreach (var forgeproduct in info.ForgeProducts)
                 {
                     docBody.AppendChild(CreateParagraph(new WordParagraph
                     {
-                        Texts = new List<string> { billet.BilletName },
+                        Texts = new List<string> { forgeproduct.ForgeProductName },
+                        TextProperties = new WordParagraphProperties
+                        {
+                            Size = "24",
+                            JustificationValues = JustificationValues.Both,
+                            Bold = true
+                        }
+                    }));
+                    docBody.AppendChild(CreateParagraph(new WordParagraph
+                    {
+                        Texts = new List<string> { "Price:" + forgeproduct.Price },
                         TextProperties = new WordParagraphProperties
                         {
                             Size = "24",
                             JustificationValues = JustificationValues.Both
                         }
                     }));
+
                 }
                 docBody.AppendChild(CreateSectionProperties());
                 wordDocument.MainDocumentPart.Document.Save();

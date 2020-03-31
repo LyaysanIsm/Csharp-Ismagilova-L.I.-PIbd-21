@@ -32,23 +32,19 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             var list = new List<ReportForgeProductBilletViewModel>();
             foreach (var billet in billets)
             {
-                var record = new ReportForgeProductBilletViewModel
-                {
-                    BilletName = billet.BilletName,
-                    ForgeProducts = new List<Tuple<string, int>>(),
-                    TotalCount = 0
-                };
                 foreach (var forgeproduct in forgeproducts)
                 {
                     if (forgeproduct.ForgeProductBillets.ContainsKey(billet.Id))
                     {
-                        record.ForgeProducts.Add(new Tuple<string, int>(forgeproduct.ForgeProductName,
-                       forgeproduct.ForgeProductBillets[billet.Id].Item2));
-                        record.TotalCount +=
-                       forgeproduct.ForgeProductBillets[billet.Id].Item2;
+                        var record = new ReportForgeProductBilletViewModel
+                        {
+                            ForgeProductName = forgeproduct.ForgeProductName,
+                            BilletName = billet.BilletName,
+                            Count = forgeproduct.ForgeProductBillets[billet.Id].Item2
+                        };
+                        list.Add(record);
                     }
                 }
-                list.Add(record);
             }
             return list;
         }
@@ -75,44 +71,44 @@ namespace ForgeShopBusinessLogic.BusinessLogics
            .ToList();
         }
         /// <summary>
-        /// Сохранение компонент в файл-Word
+        /// Сохранение изделий в файл-Word
         /// </summary>
         /// <param name="model"></param>
-        public void SaveBilletsToWordFile(ReportBindingModel model)
+        public void SaveForgeProductsToWordFile(ReportBindingModel model)
         {
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "Список компонент",
-                Billets = billetLogic.Read(null)
+                Title = "The list of forgeproducts",
+                ForgeProducts = forgeproductLogic.Read(null)
             });
         }
         /// <summary>
-        /// Сохранение компонент с указаеним продуктов в файл-Excel
+        /// Сохранение изделий в файл-Excel
         /// </summary>
         /// <param name="model"></param>
         public void SaveForgeProductBilletToExcelFile(ReportBindingModel model)
         {
             SaveToExcel.CreateDoc(new ExcelInfo
             {
+                DateFrom = model.DateFrom.Value,
+                DateTo = model.DateTo.Value,
                 FileName = model.FileName,
-                Title = "Список компонент",
-                ForgeProductBillets = GetForgeProductBillet()
+                Title = "The list of orders",
+                Orders = GetOrders(model)
             });
         }
         /// <summary>
         /// Сохранение заказов в файл-Pdf
         /// </summary>
         /// <param name="model"></param>
-        public void SaveOrdersToPdfFile(ReportBindingModel model)
+        public void SaveForgeProductsToPdfFile(ReportBindingModel model)
         {
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "Список заказов",
-                DateFrom = model.DateFrom.Value,
-                DateTo = model.DateTo.Value,
-                Orders = GetOrders(model)
+                Title = "The list forgeproducts with billets",
+                ForgeProductBillets = GetForgeProductBillet()
             });
         }
     }

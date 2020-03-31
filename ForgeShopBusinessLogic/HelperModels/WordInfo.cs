@@ -9,6 +9,6 @@ namespace ForgeShopBusinessLogic.HelperModels
     {
         public string FileName { get; set; }
         public string Title { get; set; }
-        public List<BilletViewModel> Billets { get; set; }
+        public List<ForgeProductViewModel> ForgeProducts { get; set; }
     }
 }

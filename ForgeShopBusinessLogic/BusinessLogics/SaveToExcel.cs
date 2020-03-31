@@ -47,6 +47,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                     Name = "Лист"
                 };
                 sheets.Append(sheet);
+
                 InsertCellInWorksheet(new ExcelCellParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
@@ -56,26 +57,40 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                     Text = info.Title,
                     StyleIndex = 2U
                 });
+
                 MergeCells(new ExcelMergeParameters
                 {
                     Worksheet = worksheetPart.Worksheet,
                     CellFromName = "A1",
                     CellToName = "C1"
                 });
+
                 uint rowIndex = 2;
-                foreach (var pc in info.ForgeProductBillets)
+                List<DateTime> dates = new List<DateTime>();
+                foreach (var order in info.Orders)
                 {
+                    if (!dates.Contains(order.DateCreate.Date))
+                    {
+                        dates.Add(order.DateCreate.Date);
+                    }
+                }
+
+                foreach (var date in dates)
+                {
+                    decimal GenSum = 0;
+
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         Worksheet = worksheetPart.Worksheet,
                         ShareStringPart = shareStringPart,
                         ColumnName = "A",
                         RowIndex = rowIndex,
-                        Text = pc.BilletName,
+                        Text = date.Date.ToString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
-                    foreach (var forgeproduct in pc.ForgeProducts)
+
+                    foreach (var order in info.Orders.Where(rec => rec.DateCreate.Date == date.Date))
                     {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
@@ -83,27 +98,40 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "B",
                             RowIndex = rowIndex,
-                            Text = forgeproduct.Item1,
+                            Text = order.ForgeProductName,
                             StyleIndex = 1U
                         });
+
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
                             Worksheet = worksheetPart.Worksheet,
                             ShareStringPart = shareStringPart,
                             ColumnName = "C",
                             RowIndex = rowIndex,
-                            Text = forgeproduct.Item2.ToString(),
+                            Text = order.Sum.ToString(),
                             StyleIndex = 1U
                         });
+                        GenSum += order.Sum;
                         rowIndex++;
                     }
+
+                    InsertCellInWorksheet(new ExcelCellParameters
+                    {
+                        Worksheet = worksheetPart.Worksheet,
+                        ShareStringPart = shareStringPart,
+                        ColumnName = "A",
+                        RowIndex = rowIndex,
+                        Text = "General Sum:",
+                        StyleIndex = 0U
+                    });
+
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         Worksheet = worksheetPart.Worksheet,
                         ShareStringPart = shareStringPart,
                         ColumnName = "C",
                         RowIndex = rowIndex,
-                        Text = pc.TotalCount.ToString(),
+                        Text = GenSum.ToString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
@@ -328,7 +356,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
            cellParameters.RowIndex).Count() != 0)
             {
                 row = sheetData.Elements<Row>().Where(r => r.RowIndex ==
-cellParameters.RowIndex).First();
+    cellParameters.RowIndex).First();
             }
             else
             {

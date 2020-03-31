@@ -114,14 +114,13 @@ namespace ForgeShopView
         {
             LoadData();
         }
-
-        private void ListOfBilletsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ListOfForgeProductsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
             {
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    report.SaveBilletsToWordFile(new ReportBindingModel
+                    report.SaveForgeProductsToWordFile(new ReportBindingModel
                     {
                         FileName =
                    dialog.FileName
@@ -131,16 +130,14 @@ namespace ForgeShopView
                 }
             }
         }
-
-        private void BilletsByForgeProductsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = Container.Resolve<FormReportForgeProductBillets>();
-            form.ShowDialog();
-        }
-
         private void ListOfOrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+        private void ListForgeProductswithBilletsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportForgeProductBillets>();
             form.ShowDialog();
         }
     }
