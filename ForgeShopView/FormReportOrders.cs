@@ -1,6 +1,8 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
 using ForgeShopBusinessLogic.BusinessLogics;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Unity;
 
@@ -50,26 +52,44 @@ namespace ForgeShopView
 
         private void ButtonMake_Click(object sender, EventArgs e)
         {
-            decimal Total = 0;
+            if (dateTimePickerFrom.Value.Date >= dateTimePickerTo.Value.Date)
+            {
+                MessageBox.Show("Дата начала должна быть меньше даты окончания", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
-                var dict = logic.GetOrders(new ReportBindingModel { DateFrom = dateTimePickerFrom.Value, DateTo = dateTimePickerTo.Value });
+                var dict = logic.GetOrders(new ReportBindingModel { DateFrom = dateTimePickerFrom.Value.Date, DateTo = dateTimePickerTo.Value.Date });
+                List<DateTime> dates = new List<DateTime>();
+                foreach (var order in dict)
+                {
+                    if (!dates.Contains(order.DateCreate.Date))
+                    {
+                        dates.Add(order.DateCreate.Date);
+                    }
+                }
+
                 if (dict != null)
                 {
                     dataGridView.Rows.Clear();
-                    foreach (var elem in dict)
+                    foreach (var date in dates)
                     {
-                        dataGridView.Rows.Add(new object[] { elem.DateCreate, elem.ForgeProductName, elem.Sum });
-                        Total = Total + elem.Sum;
+                        decimal GenSum = 0;
+                        dataGridView.Rows.Add(new object[] { date.Date.ToShortDateString() });
+
+                        foreach (var order in dict.Where(rec => rec.DateCreate.Date == date.Date))
+                        {
+                            dataGridView.Rows.Add(new object[] { "", order.ForgeProductName, order.Sum });
+                            GenSum += order.Sum;
+                        }
+                        dataGridView.Rows.Add(new object[] { "General Sum:", "", GenSum });
                     }
-                    dataGridView.Rows.Add(new object[] { });
-                    dataGridView.Rows.Add(new object[] { "General Sum:", Total });
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-               MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

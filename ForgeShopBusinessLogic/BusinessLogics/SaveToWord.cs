@@ -36,24 +36,14 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 {
                     docBody.AppendChild(CreateParagraph(new WordParagraph
                     {
-                        Texts = new List<string> { forgeproduct.ForgeProductName },
+                        Texts = new List<string> { forgeproduct.ForgeProductName, ":" + forgeproduct.Price.ToString() },
                         TextProperties = new WordParagraphProperties
                         {
-                            Size = "24",
-                            JustificationValues = JustificationValues.Both,
-                            Bold = true
-                        }
-                    }));
-                    docBody.AppendChild(CreateParagraph(new WordParagraph
-                    {
-                        Texts = new List<string> { "Price:" + forgeproduct.Price },
-                        TextProperties = new WordParagraphProperties
-                        {
+                            Bold = true,
                             Size = "24",
                             JustificationValues = JustificationValues.Both
                         }
                     }));
-
                 }
                 docBody.AppendChild(CreateSectionProperties());
                 wordDocument.MainDocumentPart.Document.Save();
@@ -94,7 +84,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                         Val =
                    paragraph.TextProperties.Size
                     });
-                    if (paragraph.TextProperties.Bold)
+                    if (!run.StartsWith(":") && paragraph.TextProperties.Bold)
                     {
                         properties.AppendChild(new Bold());
                     }
