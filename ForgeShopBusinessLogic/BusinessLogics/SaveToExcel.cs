@@ -85,7 +85,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                         ShareStringPart = shareStringPart,
                         ColumnName = "A",
                         RowIndex = rowIndex,
-                        Text = date.Date.ToString(),
+                        Text = date.Date.ToShortDateString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
