@@ -32,6 +32,8 @@
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BilletsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ForgeProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StoragesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FillStoragesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ButtonСreateOrder = new System.Windows.Forms.Button();
             this.ButtonTakeOrderInWork = new System.Windows.Forms.Button();
@@ -45,7 +47,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem});
+            this.справочникиToolStripMenuItem,
+            this.FillStoragesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(850, 24);
@@ -56,7 +59,8 @@
             // 
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BilletsToolStripMenuItem,
-            this.ForgeProductsToolStripMenuItem});
+            this.ForgeProductsToolStripMenuItem,
+            this.StoragesToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -74,6 +78,20 @@
             this.ForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ForgeProductsToolStripMenuItem.Text = "Forge Products";
             this.ForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ForgeProductsToolStripMenuItem_Click);
+            // 
+            // StoragesToolStripMenuItem
+            // 
+            this.StoragesToolStripMenuItem.Name = "StoragesToolStripMenuItem";
+            this.StoragesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StoragesToolStripMenuItem.Text = "Storages";
+            this.StoragesToolStripMenuItem.Click += new System.EventHandler(this.StoragesToolStripMenuItem_Click);
+            // 
+            // FillStoragesToolStripMenuItem
+            // 
+            this.FillStoragesToolStripMenuItem.Name = "FillStoragesToolStripMenuItem";
+            this.FillStoragesToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.FillStoragesToolStripMenuItem.Text = "Fill Storages";
+            this.FillStoragesToolStripMenuItem.Click += new System.EventHandler(this.FillStoragesToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -170,5 +188,7 @@
         private System.Windows.Forms.Button ButtonOrderReady;
         private System.Windows.Forms.Button ButtonPayOrder;
         private System.Windows.Forms.Button ButtonRef;
+        private System.Windows.Forms.ToolStripMenuItem StoragesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FillStoragesToolStripMenuItem;
     }
 }
