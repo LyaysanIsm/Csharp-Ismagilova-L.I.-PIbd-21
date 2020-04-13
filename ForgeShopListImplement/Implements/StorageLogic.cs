@@ -166,8 +166,7 @@ namespace ForgeShopListImplement.Implements
             foreach (var elem in ForgeProductBillets)
             {
                 int count = 0;
-                var storageBillets = source.StorageBillets.FindAll(x => x.BilletId == elem.BilletId);
-                count = storageBillets.Sum(x => x.Count);
+                count = source.StorageBillets.FindAll(x => x.BilletId == elem.BilletId).Sum(x => x.Count);
                 if (count < elem.Count * ForgeProductsCount)
                     return false;
             }

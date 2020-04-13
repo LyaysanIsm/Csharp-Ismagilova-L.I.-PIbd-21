@@ -38,21 +38,24 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
-            if (!storageLogic.CheckBilletsAvailability(order.ForgeProductId, order.Count))
+            try
             {
-                throw new Exception("На складах не хватает компонентов");
+                storageLogic.RemoveFromStorage(order.ForgeProductId, order.Count);
+                orderLogic.CreateOrUpdate(new OrderBindingModel
+                {
+                    Id = order.Id,
+                    ForgeProductId = order.ForgeProductId,
+                    Count = order.Count,
+                    Sum = order.Sum,
+                    DateCreate = order.DateCreate,
+                    DateImplement = DateTime.Now,
+                    Status = OrderStatus.Выполняется
+                });
             }
-            orderLogic.CreateOrUpdate(new OrderBindingModel
+            catch (Exception ex)
             {
-                Id = order.Id,
-                ForgeProductId = order.ForgeProductId,
-                Count = order.Count,
-                Sum = order.Sum,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
-            storageLogic.RemoveFromStorage(order.ForgeProductId, order.Count);
+                throw ex;
+            }
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {

@@ -14,7 +14,6 @@ namespace ForgeShopBusinessLogic.Interfaces
         void UpdElement(StorageBindingModel model);
         void DelElement(int id);
         void FillStorage(StorageBilletBindingModel model);
-        bool CheckBilletsAvailability(int forgeproductId, int forgeproductsCount);
         void RemoveFromStorage(int forgeproductId, int forgeproductsCount);
     }
 }
