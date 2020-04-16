@@ -11,14 +11,11 @@ namespace ForgeShopBusinessLogic.BusinessLogics
 {
     public class ReportLogic
     {
-        private readonly IBilletLogic billetLogic;
         private readonly IForgeProductLogic forgeproductLogic;
         private readonly IOrderLogic orderLogic;
-        public ReportLogic(IForgeProductLogic forgeproductLogic, IBilletLogic billetLogic,
-       IOrderLogic orderLLogic)
+        public ReportLogic(IForgeProductLogic forgeproductLogic, IOrderLogic orderLLogic)
         {
             this.forgeproductLogic = forgeproductLogic;
-            this.billetLogic = billetLogic;
             this.orderLogic = orderLLogic;
         }
         /// <summary>
@@ -27,23 +24,19 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         /// <returns></returns>
         public List<ReportForgeProductBilletViewModel> GetForgeProductBillet()
         {
-            var billets = billetLogic.Read(null);
             var forgeproducts = forgeproductLogic.Read(null);
             var list = new List<ReportForgeProductBilletViewModel>();
-            foreach (var billet in billets)
+            foreach (var forgeproduct in forgeproducts)
             {
-                foreach (var forgeproduct in forgeproducts)
+                foreach (var fb in forgeproduct.ForgeProductBillets)
                 {
-                    if (forgeproduct.ForgeProductBillets.ContainsKey(billet.Id))
+                    var record = new ReportForgeProductBilletViewModel
                     {
-                        var record = new ReportForgeProductBilletViewModel
-                        {
-                            ForgeProductName = forgeproduct.ForgeProductName,
-                            BilletName = billet.BilletName,
-                            Count = forgeproduct.ForgeProductBillets[billet.Id].Item2
-                        };
-                        list.Add(record);
-                    }
+                        ForgeProductName = forgeproduct.ForgeProductName,
+                        BilletName = fb.Value.Item1,
+                        Count = fb.Value.Item2
+                    };
+                    list.Add(record);
                 }
             }
             return list;
@@ -53,22 +46,45 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public List<ReportOrdersViewModel> GetOrders(ReportBindingModel model)
+        public List<(DateTime, List<ReportOrdersViewModel>)> GetOrders(ReportBindingModel model)
         {
-            return orderLogic.Read(new OrderBindingModel
+            List<(DateTime, List<ReportOrdersViewModel>)> list = new List<(DateTime, List<ReportOrdersViewModel>)>();
+            var orders = orderLogic.Read(new OrderBindingModel
             {
                 DateFrom = model.DateFrom,
                 DateTo = model.DateTo
             })
-            .Select(x => new ReportOrdersViewModel
+             .Select(x => new ReportOrdersViewModel
+             {
+                 DateCreate = x.DateCreate,
+                 ForgeProductName = x.ForgeProductName,
+                 Count = x.Count,
+                 Sum = x.Sum,
+                 Status = x.Status
+             });
+            List<DateTime> dates = new List<DateTime>();
+            foreach (var order in orders)
             {
-                DateCreate = x.DateCreate,
-                ForgeProductName = x.ForgeProductName,
-                Count = x.Count,
-                Sum = x.Sum,
-                Status = x.Status
-            })
-           .ToList();
+                if (!dates.Contains(order.DateCreate.Date))
+                {
+                    dates.Add(order.DateCreate.Date);
+                }
+            }
+            foreach (var date in dates)
+            {
+                (DateTime, List<ReportOrdersViewModel>) record;
+                record.Item2 = new List<ReportOrdersViewModel>();
+
+                record.Item1 = date;
+
+                foreach (var order in orders.Where(rec => rec.DateCreate.Date == date))
+                {
+                    record.Item2.Add(order);
+                }
+
+                list.Add(record);
+            }
+            return list;
         }
         /// <summary>
         /// Сохранение изделий в файл-Word
@@ -91,8 +107,6 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         {
             SaveToExcel.CreateDoc(new ExcelInfo
             {
-                DateFrom = model.DateFrom.Value,
-                DateTo = model.DateTo.Value,
                 FileName = model.FileName,
                 Title = "The list of orders",
                 Orders = GetOrders(model)
