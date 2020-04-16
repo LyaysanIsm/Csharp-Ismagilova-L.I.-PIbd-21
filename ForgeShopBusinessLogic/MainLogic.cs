@@ -16,6 +16,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 ForgeProductId = model.ForgeProductId,
+                ClientId = model.ClientId,
                 Count = model.Count,
                 Sum = model.Sum,
                 DateCreate = DateTime.Now,
@@ -40,6 +41,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ForgeProductId = order.ForgeProductId,
+                ClientId = order.ClientId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -64,6 +66,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -89,6 +92,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,

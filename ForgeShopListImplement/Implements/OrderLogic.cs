@@ -60,22 +60,24 @@ namespace ForgeShopListImplement.Implements
             List<OrderViewModel> result = new List<OrderViewModel>();
             foreach (var Order in source.Orders)
             {
-                if (model != null)
+                if (
+                    model != null && Order.Id == model.Id
+                    || model.DateFrom.HasValue && model.DateTo.HasValue && Order.DateCreate >= model.DateFrom && Order.DateCreate <= model.DateTo
+                    || model.ClientId.HasValue && Order.ClientId == model.ClientId
+                )
                 {
-                    if (Order.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && Order.DateCreate >= model.DateFrom && Order.DateCreate <= model.DateTo))
-                    {
-                        result.Add(CreateViewModel(Order));
-                        break;
-                    }
-                    continue;
+                    result.Add(CreateViewModel(Order));
+                    break;
                 }
                 result.Add(CreateViewModel(Order));
             }
             return result;
         }
+
         private Order CreateModel(OrderBindingModel model, Order Order)
         {
             Order.ForgeProductId = model.ForgeProductId == 0 ? Order.ForgeProductId : model.ForgeProductId;
+            Order.ClientId = (int)model.ClientId;
             Order.Count = model.Count;
             Order.Sum = model.Sum;
             Order.Status = model.Status;
@@ -97,6 +99,7 @@ namespace ForgeShopListImplement.Implements
             return new OrderViewModel
             {
                 Id = Order.Id,
+                ClientId = Order.ClientId,
                 ForgeProductName = ForgeProductName,
                 Count = Order.Count,
                 Sum = Order.Sum,

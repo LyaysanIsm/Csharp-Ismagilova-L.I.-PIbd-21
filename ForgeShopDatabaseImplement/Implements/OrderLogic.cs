@@ -62,22 +62,24 @@ model.Id);
             using (var context = new ForgeShopDatabase())
             {
                 return context.Orders
-            .Where(
-                    rec => model == null
-                    || (rec.Id == model.Id && model.Id.HasValue)
-                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
-                )
-            .Select(rec => new OrderViewModel
-            {
-                Id = rec.Id,
-                ForgeProductId = rec.ForgeProductId,
-                ForgeProductName = rec.ForgeProduct.ForgeProductName,
-                Count = rec.Count,
-                Sum = rec.Sum,
-                Status = rec.Status,
-                DateCreate = rec.DateCreate,
-                DateImplement = rec.DateImplement
-            })
+                .Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
+                || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
+                (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+                .Select(rec => new OrderViewModel
+                {
+                    Id = rec.Id,
+                    ClientId = rec.ClientId,
+                    ForgeProductId = rec.ForgeProductId,
+                    Count = rec.Count,
+                    Sum = rec.Sum,
+                    Status = rec.Status,
+                    DateCreate = rec.DateCreate,
+                    DateImplement = rec.DateImplement,
+                    ClientFIO = context.Clients.FirstOrDefault(recC => recC.Id ==
+                    rec.ClientId).ClientFIO,
+                    ForgeProductName = context.ForgeProducts.FirstOrDefault(recS => recS.Id ==
+                    rec.ForgeProductId).ForgeProductName,
+                })
             .ToList();
             }
         }

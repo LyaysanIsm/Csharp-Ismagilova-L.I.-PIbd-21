@@ -57,16 +57,22 @@ namespace ForgeShopFileImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             return source.Orders
-            .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
+            .Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
+                || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
+                (model.ClientId.HasValue && rec.ClientId == model.ClientId))
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
-                ForgeProductName = GetForgeProductName(rec.ForgeProductId),
+                ClientId = rec.ClientId,
                 Count = rec.Count,
                 Sum = rec.Sum,
                 Status = rec.Status,
                 DateCreate = rec.DateCreate,
-                DateImplement = rec.DateImplement
+                DateImplement = rec.DateImplement,
+                ClientFIO = source.Clients.FirstOrDefault(recC => recC.Id ==
+                rec.ClientId).ClientFIO,
+                ForgeProductName = source.ForgeProducts.FirstOrDefault(recS => recS.Id ==
+                rec.ForgeProductId).ForgeProductName,
             })
             .ToList();
         }
