@@ -36,12 +36,14 @@
             this.ListOfForgeProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListOfOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListForgeProductswithBilletsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ButtonСreateOrder = new System.Windows.Forms.Button();
             this.ButtonTakeOrderInWork = new System.Windows.Forms.Button();
             this.ButtonOrderReady = new System.Windows.Forms.Button();
             this.ButtonPayOrder = new System.Windows.Forms.Button();
             this.ButtonRef = new System.Windows.Forms.Button();
+            this.КлиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,9 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.КлиентыToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(850, 24);
@@ -93,14 +97,14 @@
             // ListOfForgeProductsToolStripMenuItem
             // 
             this.ListOfForgeProductsToolStripMenuItem.Name = "ListOfForgeProductsToolStripMenuItem";
-            this.ListOfForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.ListOfForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.ListOfForgeProductsToolStripMenuItem.Text = "List of ForgeProducts";
             this.ListOfForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ListOfForgeProductsToolStripMenuItem_Click);
             // 
             // ListOfOrdersToolStripMenuItem
             // 
             this.ListOfOrdersToolStripMenuItem.Name = "ListOfOrdersToolStripMenuItem";
-            this.ListOfOrdersToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.ListOfOrdersToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.ListOfOrdersToolStripMenuItem.Text = "List of Orders";
             this.ListOfOrdersToolStripMenuItem.Click += new System.EventHandler(this.ListOfOrdersToolStripMenuItem_Click);
             // 
@@ -110,6 +114,11 @@
             this.ListForgeProductswithBilletsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.ListForgeProductswithBilletsToolStripMenuItem.Text = "List ForgeProducts with Billets";
             this.ListForgeProductswithBilletsToolStripMenuItem.Click += new System.EventHandler(this.ListForgeProductswithBilletsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // dataGridView
             // 
@@ -170,6 +179,13 @@
             this.ButtonRef.UseVisualStyleBackColor = true;
             this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
             // 
+            // КлиентыToolStripMenuItem
+            // 
+            this.КлиентыToolStripMenuItem.Name = "КлиентыToolStripMenuItem";
+            this.КлиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.КлиентыToolStripMenuItem.Text = "Клиенты";
+            this.КлиентыToolStripMenuItem.Click += new System.EventHandler(this.КлиентыToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,5 +226,7 @@
         private System.Windows.Forms.ToolStripMenuItem ListOfForgeProductsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListOfOrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ListForgeProductswithBilletsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem КлиентыToolStripMenuItem;
     }
 }

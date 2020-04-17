@@ -141,5 +141,11 @@ namespace ForgeShopView
             var form = Container.Resolve<FormReportForgeProductBillets>();
             form.ShowDialog();
         }
+
+        private void КлиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormClients>();
+            form.ShowDialog();
+        }
     }
 }
