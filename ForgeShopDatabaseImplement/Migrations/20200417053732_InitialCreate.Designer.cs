@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForgeShopDatabaseImplement.Migrations
 {
     [DbContext(typeof(ForgeShopDatabase))]
-    [Migration("20200416162255_InitialCreate")]
+    [Migration("20200417053732_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,30 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Billets");
+                });
+
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.ForgeProduct", b =>
@@ -115,6 +139,8 @@ namespace ForgeShopDatabaseImplement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("ForgeProductId");
 
                     b.ToTable("Orders");
@@ -137,6 +163,12 @@ namespace ForgeShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ForgeShopDatabaseImplement.Models.ForgeProduct", "ForgeProduct")
                         .WithMany("Orders")
                         .HasForeignKey("ForgeProductId")

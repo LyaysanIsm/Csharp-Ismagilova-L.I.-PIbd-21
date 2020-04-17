@@ -35,6 +35,30 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.ToTable("Billets");
                 });
 
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.ForgeProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -113,6 +137,8 @@ namespace ForgeShopDatabaseImplement.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
                     b.HasIndex("ForgeProductId");
 
                     b.ToTable("Orders");
@@ -135,6 +161,12 @@ namespace ForgeShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ForgeShopDatabaseImplement.Models.ForgeProduct", "ForgeProduct")
                         .WithMany("Orders")
                         .HasForeignKey("ForgeProductId")
