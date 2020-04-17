@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopFileImplement", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopDatabaseImplement", "ForgeShopDatabaseImplement\ForgeShopDatabaseImplement.csproj", "{25DF79CD-0D08-4703-BE51-12ACFAD3341D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeShopRestApi", "ForgeShopRestApi\ForgeShopRestApi.csproj", "{61988714-785E-4232-BFDF-3F61C4253AA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopRestApi", "ForgeShopRestApi\ForgeShopRestApi.csproj", "{61988714-785E-4232-BFDF-3F61C4253AA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeShopClientView", "ForgeShopClientView\ForgeShopClientView.csproj", "{22C447C6-40E2-4F5F-8FFB-177DCBB5265F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{61988714-785E-4232-BFDF-3F61C4253AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61988714-785E-4232-BFDF-3F61C4253AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61988714-785E-4232-BFDF-3F61C4253AA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C447C6-40E2-4F5F-8FFB-177DCBB5265F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C447C6-40E2-4F5F-8FFB-177DCBB5265F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C447C6-40E2-4F5F-8FFB-177DCBB5265F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C447C6-40E2-4F5F-8FFB-177DCBB5265F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
