@@ -18,7 +18,7 @@ namespace ForgeShopDatabaseImplement.Implements
                 Client element = context.Clients.FirstOrDefault(rec => rec.Email == model.Email && rec.Id != model.Id);
                 if (element != null)
                 {
-                    throw new Exception("Уже есть компонент с таким названием");
+                    throw new Exception("Уже есть клиент с таким логином");
                 }
                 if (model.Id.HasValue)
                 {
@@ -34,6 +34,8 @@ namespace ForgeShopDatabaseImplement.Implements
                     context.Clients.Add(element);
                 }
                 element.Email = model.Email;
+                element.ClientFIO = model.ClientFIO;
+                element.Password = model.Password;
                 context.SaveChanges();
             }
         }

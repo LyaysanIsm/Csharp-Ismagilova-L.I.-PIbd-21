@@ -110,10 +110,6 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClientFIO")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
@@ -161,7 +157,7 @@ namespace ForgeShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", null)
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", "Client")
                         .WithMany("Orders")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)

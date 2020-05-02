@@ -32,9 +32,10 @@ namespace ForgeShopView
                 ComboBoxForgeProduct.ValueMember = "Id";
 
                 var listC = logicC.Read(null);
-                ComboBoxClient.DisplayMember = "FIO";
+                ComboBoxClient.DisplayMember = "ClientFIO";
                 ComboBoxClient.ValueMember = "Id";
                 ComboBoxClient.DataSource = listC;
+                ComboBoxClient.SelectedItem = null;
             }
             catch (Exception ex)
             {
@@ -96,10 +97,10 @@ id
             {
                 logicM.CreateOrder(new CreateOrderBindingModel
                 {
+                    ClientId = Convert.ToInt32(ComboBoxClient.SelectedValue),
                     ForgeProductId = Convert.ToInt32(ComboBoxForgeProduct.SelectedValue),
                     Count = Convert.ToInt32(TextBoxCount.Text),
-                    Sum = Convert.ToDecimal(textBoxSum.Text),
-                    ClientId = Convert.ToInt32(ComboBoxClient.SelectedValue)
+                    Sum = Convert.ToDecimal(textBoxSum.Text)
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение",
                MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForgeShopDatabaseImplement.Migrations
 {
     [DbContext(typeof(ForgeShopDatabase))]
-    [Migration("20200417053732_InitialCreate")]
+    [Migration("20200502130605_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,10 +112,6 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClientFIO")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
@@ -163,7 +159,7 @@ namespace ForgeShopDatabaseImplement.Migrations
 
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
-                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", null)
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", "Client")
                         .WithMany("Orders")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)

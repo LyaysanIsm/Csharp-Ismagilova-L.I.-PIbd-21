@@ -142,7 +142,7 @@ namespace ForgeShopFileImplement
                     list.Add(new Client
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        ClientFIO = elem.Element("FIO").Value,
+                        ClientFIO = elem.Element("ClientFIO").Value,
                         Email = elem.Element("Email").Value,
                         Password = elem.Element("Password").Value
                     });

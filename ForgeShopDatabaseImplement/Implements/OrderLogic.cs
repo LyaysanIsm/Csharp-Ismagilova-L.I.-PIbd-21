@@ -31,6 +31,7 @@ namespace ForgeShopDatabaseImplement.Implements
                     element = new Order();
                     context.Orders.Add(element);
                 }
+                element.ClientId = model.ClientId == null ? element.ClientId : (int)model.ClientId;
                 element.ForgeProductId = model.ForgeProductId == 0 ? element.ForgeProductId : model.ForgeProductId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
@@ -65,6 +66,8 @@ model.Id);
                 .Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
                 || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
                 (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+                .Include(rec => rec.ForgeProduct)
+                .Include(rec => rec.Client)
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
@@ -75,10 +78,8 @@ model.Id);
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
-                    ClientFIO = context.Clients.FirstOrDefault(recC => recC.Id ==
-                    rec.ClientId).ClientFIO,
-                    ForgeProductName = context.ForgeProducts.FirstOrDefault(recS => recS.Id ==
-                    rec.ForgeProductId).ForgeProductName,
+                    ForgeProductName = rec.ForgeProduct.ForgeProductName,
+                    ClientFIO = rec.Client.ClientFIO
                 })
             .ToList();
             }
