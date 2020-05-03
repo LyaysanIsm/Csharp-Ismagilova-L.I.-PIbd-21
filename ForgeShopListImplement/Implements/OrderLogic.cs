@@ -62,7 +62,7 @@ namespace ForgeShopListImplement.Implements
             {
                 if (model != null)
                 {
-                    if (Order.Id == model.Id)
+                    if (Order.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && Order.DateCreate >= model.DateFrom && Order.DateCreate <= model.DateTo))
                     {
                         result.Add(CreateViewModel(Order));
                         break;

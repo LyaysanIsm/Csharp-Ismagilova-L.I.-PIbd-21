@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopListImplement", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopFileImplement", "ForgeShopFileImplement\ForgeShopFileImplement.csproj", "{3D64FE2F-4881-4814-8E7E-AE52719C078C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeShopDatabaseImplement", "ForgeShopDatabaseImplement\ForgeShopDatabaseImplement.csproj", "{25DF79CD-0D08-4703-BE51-12ACFAD3341D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForgeShopDatabaseImplement", "ForgeShopDatabaseImplement\ForgeShopDatabaseImplement.csproj", "{25DF79CD-0D08-4703-BE51-12ACFAD3341D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

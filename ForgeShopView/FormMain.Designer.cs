@@ -32,6 +32,10 @@
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BilletsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ForgeProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListOfForgeProductsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListOfOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ListForgeProductswithBilletsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ButtonСreateOrder = new System.Windows.Forms.Button();
             this.ButtonTakeOrderInWork = new System.Windows.Forms.Button();
@@ -45,7 +49,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem});
+            this.справочникиToolStripMenuItem,
+            this.отчетыToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(850, 24);
@@ -64,16 +69,47 @@
             // BilletsToolStripMenuItem
             // 
             this.BilletsToolStripMenuItem.Name = "BilletsToolStripMenuItem";
-            this.BilletsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BilletsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.BilletsToolStripMenuItem.Text = "Billets";
             this.BilletsToolStripMenuItem.Click += new System.EventHandler(this.BilletsToolStripMenuItem_Click);
             // 
             // ForgeProductsToolStripMenuItem
             // 
             this.ForgeProductsToolStripMenuItem.Name = "ForgeProductsToolStripMenuItem";
-            this.ForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.ForgeProductsToolStripMenuItem.Text = "Forge Products";
             this.ForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ForgeProductsToolStripMenuItem_Click);
+            // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ListOfForgeProductsToolStripMenuItem,
+            this.ListOfOrdersToolStripMenuItem,
+            this.ListForgeProductswithBilletsToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // ListOfForgeProductsToolStripMenuItem
+            // 
+            this.ListOfForgeProductsToolStripMenuItem.Name = "ListOfForgeProductsToolStripMenuItem";
+            this.ListOfForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.ListOfForgeProductsToolStripMenuItem.Text = "List of ForgeProducts";
+            this.ListOfForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ListOfForgeProductsToolStripMenuItem_Click);
+            // 
+            // ListOfOrdersToolStripMenuItem
+            // 
+            this.ListOfOrdersToolStripMenuItem.Name = "ListOfOrdersToolStripMenuItem";
+            this.ListOfOrdersToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.ListOfOrdersToolStripMenuItem.Text = "List of Orders";
+            this.ListOfOrdersToolStripMenuItem.Click += new System.EventHandler(this.ListOfOrdersToolStripMenuItem_Click);
+            // 
+            // ListForgeProductswithBilletsToolStripMenuItem
+            // 
+            this.ListForgeProductswithBilletsToolStripMenuItem.Name = "ListForgeProductswithBilletsToolStripMenuItem";
+            this.ListForgeProductswithBilletsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.ListForgeProductswithBilletsToolStripMenuItem.Text = "List ForgeProducts with Billets";
+            this.ListForgeProductswithBilletsToolStripMenuItem.Click += new System.EventHandler(this.ListForgeProductswithBilletsToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -170,5 +206,9 @@
         private System.Windows.Forms.Button ButtonOrderReady;
         private System.Windows.Forms.Button ButtonPayOrder;
         private System.Windows.Forms.Button ButtonRef;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ListOfForgeProductsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ListOfOrdersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ListForgeProductswithBilletsToolStripMenuItem;
     }
 }
