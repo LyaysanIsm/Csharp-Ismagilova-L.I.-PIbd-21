@@ -14,6 +14,6 @@ namespace ForgeShopBusinessLogic.Interfaces
         void UpdElement(StorageBindingModel model);
         void DelElement(int id);
         void FillStorage(StorageBilletBindingModel model);
-        void RemoveFromStorage(int forgeproductId, int forgeproductsCount);
+        void RemoveFromStorage(OrderViewModel model);
     }
 }

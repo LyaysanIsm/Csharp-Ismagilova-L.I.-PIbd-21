@@ -40,7 +40,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             }
             try
             {
-                storageLogic.RemoveFromStorage(order.ForgeProductId, order.Count);
+                storageLogic.RemoveFromStorage(order);
                 orderLogic.CreateOrUpdate(new OrderBindingModel
                 {
                     Id = order.Id,
@@ -52,9 +52,9 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                     Status = OrderStatus.Выполняется
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
         public void FinishOrder(ChangeStatusBindingModel model)

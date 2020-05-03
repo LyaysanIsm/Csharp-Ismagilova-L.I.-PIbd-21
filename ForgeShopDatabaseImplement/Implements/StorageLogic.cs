@@ -142,7 +142,7 @@ namespace ForgeShopDatabaseImplement.Implements
                 context.SaveChanges();
             }
         }
-        public void RemoveFromStorage(int forgeproductId, int forgeproductsCount)
+        public void RemoveFromStorage(OrderViewModel order)
         {
             using (var context = new ForgeShopDatabase())
             {
@@ -150,25 +150,31 @@ namespace ForgeShopDatabaseImplement.Implements
                 {
                     try
                     {
-                        var forgeproductBillets = context.ForgeProductBillets.Where(x => x.ForgeProductId == forgeproductId);
-                        if (forgeproductBillets.Count() == 0) return;
-                        foreach (var elem in forgeproductBillets)
+                        var forgeproductBillets = context.ForgeProductBillets.Where(x => x.ForgeProductId == order.ForgeProductId).ToList();
+                        var StorageBillets = context.StorageBillets.ToList();
+                        foreach (var billet in forgeproductBillets)
                         {
-                            int left = elem.Count * forgeproductsCount;
-                            var StorageBillets = context.StorageBillets.Where(x => x.BilletId == elem.BilletId);
-                            int available = StorageBillets.Sum(x => x.Count);
-                            if (available < left) throw new Exception("Недостаточно компонентов на складе");
-                            foreach (var rec in StorageBillets)
+                            var billetCount = billet.Count * order.Count;
+                            foreach (var sb in StorageBillets)
                             {
-                                int toRemove = left > rec.Count ? rec.Count : left;
-                                rec.Count -= toRemove;
-                                left -= toRemove;
-                                if (left == 0) break;
+                                if (sb.BilletId == billet.BilletId && sb.Count >= billetCount)
+                                {
+                                    sb.Count -= billetCount;
+                                    billetCount = 0;
+                                    context.SaveChanges();
+                                    break;
+                                }
+                                else if (sb.BilletId == billet.BilletId && sb.Count < billetCount)
+                                {
+                                    billetCount -= sb.Count;
+                                    sb.Count = 0;
+                                    context.SaveChanges();
+                                }
                             }
+                            if (billetCount > 0)
+                                throw new Exception("Недостаточно компонентов на складе");
                         }
-                        context.SaveChanges();
                         transaction.Commit();
-                        return;
                     }
                     catch (Exception)
                     {

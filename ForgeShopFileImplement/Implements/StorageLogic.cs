@@ -141,23 +141,35 @@ namespace ForgeShopFileImplement.Implements
             return result;
         }
 
-        public void RemoveFromStorage(int ForgeProductId, int ForgeProductsCount)
+        public void RemoveFromStorage(OrderViewModel model)
         {
-            var ForgeProductBillets = source.ForgeProductBillets.Where(x => x.ForgeProductId == ForgeProductId);
-            if (ForgeProductBillets.Count() == 0) return;
-            foreach (var elem in ForgeProductBillets)
+            var forgeproductBillets = source.ForgeProductBillets.Where(rec => rec.Id == model.ForgeProductId).ToList();
+            foreach (var pc in forgeproductBillets)
             {
-                int left = elem.Count * ForgeProductsCount;
-                var storageBillets = source.StorageBillets.FindAll(x => x.BilletId == elem.BilletId);
-                foreach (var rec in storageBillets)
+                var storageBillets = source.StorageBillets.Where(rec => rec.BilletId == pc.BilletId);
+                int sum = storageBillets.Sum(rec => rec.Count);
+                if (sum < pc.Count * model.Count)
                 {
-                    int toRemove = left > rec.Count ? rec.Count : left;
-                    rec.Count -= toRemove;
-                    left -= toRemove;
-                    if (left == 0) break;
+                    throw new Exception("Недостаточно компонентов на складе");
+                }
+                else
+                {
+                    int left = pc.Count * model.Count;
+                    foreach (var sb in storageBillets)
+                    {
+                        if (sb.Count >= left)
+                        {
+                            sb.Count -= left;
+                            break;
+                        }
+                        else
+                        {
+                            left -= sb.Count;
+                            sb.Count = 0;
+                        }
+                    }
                 }
             }
-            return;
         }
     }
 }
