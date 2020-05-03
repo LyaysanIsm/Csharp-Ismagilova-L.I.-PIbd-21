@@ -37,13 +37,13 @@
             this.ListOfOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ListForgeProductswithBilletsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.КлиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ButtonСreateOrder = new System.Windows.Forms.Button();
             this.ButtonTakeOrderInWork = new System.Windows.Forms.Button();
             this.ButtonOrderReady = new System.Windows.Forms.Button();
             this.ButtonPayOrder = new System.Windows.Forms.Button();
             this.ButtonRef = new System.Windows.Forms.Button();
-            this.КлиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -120,6 +120,13 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
+            // КлиентыToolStripMenuItem
+            // 
+            this.КлиентыToolStripMenuItem.Name = "КлиентыToolStripMenuItem";
+            this.КлиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.КлиентыToolStripMenuItem.Text = "Клиенты";
+            this.КлиентыToolStripMenuItem.Click += new System.EventHandler(this.КлиентыToolStripMenuItem_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.HighlightText;
@@ -178,13 +185,6 @@
             this.ButtonRef.Text = "Обновить список";
             this.ButtonRef.UseVisualStyleBackColor = true;
             this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
-            // 
-            // КлиентыToolStripMenuItem
-            // 
-            this.КлиентыToolStripMenuItem.Name = "КлиентыToolStripMenuItem";
-            this.КлиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.КлиентыToolStripMenuItem.Text = "Клиенты";
-            this.КлиентыToolStripMenuItem.Click += new System.EventHandler(this.КлиентыToolStripMenuItem_Click);
             // 
             // FormMain
             // 
