@@ -76,12 +76,12 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                         ShareStringPart = shareStringPart,
                         ColumnName = "A",
                         RowIndex = rowIndex,
-                        Text = date.Item1.ToShortDateString(),
+                        Text = date.Key.ToShortDateString(),
                         StyleIndex = 0U
                     });
                     rowIndex++;
 
-                    foreach (var order in date.Item2)
+                    foreach (var order in date)
                     {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {

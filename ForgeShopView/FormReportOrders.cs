@@ -67,9 +67,9 @@ namespace ForgeShopView
                     foreach (var date in dict)
                     {
                         decimal GenSum = 0;
-                        dataGridView.Rows.Add(new object[] { date.Item1.ToShortDateString() });
+                        dataGridView.Rows.Add(new object[] { date.Key.ToShortDateString() });
 
-                        foreach (var order in date.Item2)
+                        foreach (var order in date)
                         {
                             dataGridView.Rows.Add(new object[] { "", order.ForgeProductName, order.Sum });
                             GenSum += order.Sum;
