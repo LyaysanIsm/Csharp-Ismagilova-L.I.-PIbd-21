@@ -112,5 +112,17 @@ namespace ForgeShopView
         {
             LoadData();
         }
+
+        private void StoragesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormStorages>();
+            form.ShowDialog();
+        }
+
+        private void FillStoragesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormFillStorage>();
+            form.ShowDialog();
+        }
     }
 }

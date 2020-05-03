@@ -67,6 +67,7 @@ model.Id);
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
+                ForgeProductId = rec.ForgeProductId,
                 ForgeProductName = rec.ForgeProduct.ForgeProductName,
                 Count = rec.Count,
                 Sum = rec.Sum,
