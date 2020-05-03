@@ -57,7 +57,7 @@
             this.КлиентыToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(850, 24);
+            this.menuStrip.Size = new System.Drawing.Size(906, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -133,12 +133,12 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(2, 23);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(704, 307);
+            this.dataGridView.Size = new System.Drawing.Size(738, 307);
             this.dataGridView.TabIndex = 1;
             // 
             // ButtonСreateOrder
             // 
-            this.ButtonСreateOrder.Location = new System.Drawing.Point(712, 43);
+            this.ButtonСreateOrder.Location = new System.Drawing.Point(757, 45);
             this.ButtonСreateOrder.Name = "ButtonСreateOrder";
             this.ButtonСreateOrder.Size = new System.Drawing.Size(126, 29);
             this.ButtonСreateOrder.TabIndex = 2;
@@ -148,7 +148,7 @@
             // 
             // ButtonTakeOrderInWork
             // 
-            this.ButtonTakeOrderInWork.Location = new System.Drawing.Point(712, 88);
+            this.ButtonTakeOrderInWork.Location = new System.Drawing.Point(757, 89);
             this.ButtonTakeOrderInWork.Name = "ButtonTakeOrderInWork";
             this.ButtonTakeOrderInWork.Size = new System.Drawing.Size(126, 40);
             this.ButtonTakeOrderInWork.TabIndex = 3;
@@ -158,7 +158,7 @@
             // 
             // ButtonOrderReady
             // 
-            this.ButtonOrderReady.Location = new System.Drawing.Point(712, 144);
+            this.ButtonOrderReady.Location = new System.Drawing.Point(757, 144);
             this.ButtonOrderReady.Name = "ButtonOrderReady";
             this.ButtonOrderReady.Size = new System.Drawing.Size(126, 29);
             this.ButtonOrderReady.TabIndex = 4;
@@ -168,7 +168,7 @@
             // 
             // ButtonPayOrder
             // 
-            this.ButtonPayOrder.Location = new System.Drawing.Point(712, 190);
+            this.ButtonPayOrder.Location = new System.Drawing.Point(757, 189);
             this.ButtonPayOrder.Name = "ButtonPayOrder";
             this.ButtonPayOrder.Size = new System.Drawing.Size(126, 29);
             this.ButtonPayOrder.TabIndex = 5;
@@ -178,7 +178,7 @@
             // 
             // ButtonRef
             // 
-            this.ButtonRef.Location = new System.Drawing.Point(712, 237);
+            this.ButtonRef.Location = new System.Drawing.Point(757, 238);
             this.ButtonRef.Name = "ButtonRef";
             this.ButtonRef.Size = new System.Drawing.Size(126, 29);
             this.ButtonRef.TabIndex = 6;
@@ -190,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 331);
+            this.ClientSize = new System.Drawing.Size(906, 337);
             this.Controls.Add(this.ButtonRef);
             this.Controls.Add(this.ButtonPayOrder);
             this.Controls.Add(this.ButtonOrderReady);

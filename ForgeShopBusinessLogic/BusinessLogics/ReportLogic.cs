@@ -46,44 +46,17 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public List<(DateTime, List<ReportOrdersViewModel>)> GetOrders(ReportBindingModel model)
+        public List<IGrouping<DateTime, OrderViewModel>> GetOrders(ReportBindingModel model)
         {
-            List<(DateTime, List<ReportOrdersViewModel>)> list = new List<(DateTime, List<ReportOrdersViewModel>)>();
-            var orders = orderLogic.Read(new OrderBindingModel
-            {
-                DateFrom = model.DateFrom,
-                DateTo = model.DateTo
-            })
-             .Select(x => new ReportOrdersViewModel
-             {
-                 DateCreate = x.DateCreate,
-                 ForgeProductName = x.ForgeProductName,
-                 Count = x.Count,
-                 Sum = x.Sum,
-                 Status = x.Status
-             });
-            List<DateTime> dates = new List<DateTime>();
-            foreach (var order in orders)
-            {
-                if (!dates.Contains(order.DateCreate.Date))
-                {
-                    dates.Add(order.DateCreate.Date);
-                }
-            }
-            foreach (var date in dates)
-            {
-                (DateTime, List<ReportOrdersViewModel>) record;
-                record.Item2 = new List<ReportOrdersViewModel>();
-
-                record.Item1 = date;
-
-                foreach (var order in orders.Where(rec => rec.DateCreate.Date == date))
-                {
-                    record.Item2.Add(order);
-                }
-
-                list.Add(record);
-            }
+            var list = orderLogic
+          .Read(new OrderBindingModel
+          {
+              DateFrom = model.DateFrom,
+              DateTo = model.DateTo
+          })
+           .GroupBy(rec => rec.DateCreate.Date)
+           .OrderBy(recG => recG.Key)
+           .ToList();
             return list;
         }
         /// <summary>
