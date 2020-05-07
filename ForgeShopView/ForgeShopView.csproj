@@ -243,6 +243,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportBillet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportBillet.Designer.cs">
+      <DependentUpon>FormReportBillet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReportOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,6 +260,12 @@
     </Compile>
     <Compile Include="FormReportForgeProductBillets.Designer.cs">
       <DependentUpon>FormReportForgeProductBillets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportStorageBillet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportStorageBillet.Designer.cs">
+      <DependentUpon>FormReportStorageBillet.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStorage.cs">
       <SubType>Form</SubType>
@@ -294,11 +306,17 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportBillet.resx">
+      <DependentUpon>FormReportBillet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReportOrders.resx">
       <DependentUpon>FormReportOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReportForgeProductBillets.resx">
       <DependentUpon>FormReportForgeProductBillets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportStorageBillet.resx">
+      <DependentUpon>FormReportStorageBillet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorage.resx">
       <DependentUpon>FormStorage.cs</DependentUpon>
@@ -316,12 +334,32 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportStorageBillet.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.BilletViewModel.datasource" />
     <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.ForgeProductViewModel.datasource" />
     <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.ReportForgeProductBilletViewModel.datasource" />
     <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.ReportOrdersViewModel.datasource" />
+    <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.ReportStorageBilletViewModel.datasource" />
+    <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.StorageBilletViewModel.datasource" />
+    <None Include="Properties\DataSources\ForgeShopBusinessLogic.ViewModels.StorageViewModel.datasource" />
+    <None Include="Properties\DataSources\ForgeShopView.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\ForgeShopView.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\FormBillet.datasource" />
+    <None Include="Properties\DataSources\FormBilletForgeProduct.datasource" />
+    <None Include="Properties\DataSources\FormBillets.datasource" />
+    <None Include="Properties\DataSources\FormCreateOrder.datasource" />
+    <None Include="Properties\DataSources\FormFillStorage.datasource" />
+    <None Include="Properties\DataSources\FormForgeProduct.datasource" />
+    <None Include="Properties\DataSources\FormForgeProducts.datasource" />
+    <None Include="Properties\DataSources\FormMain.datasource" />
+    <None Include="Properties\DataSources\FormReportForgeProductBillets.datasource" />
+    <None Include="Properties\DataSources\FormReportOrders.datasource" />
+    <None Include="Properties\DataSources\FormStorage.datasource" />
+    <None Include="Properties\DataSources\FormStorages.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\SqlServerTypes.Utilities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
