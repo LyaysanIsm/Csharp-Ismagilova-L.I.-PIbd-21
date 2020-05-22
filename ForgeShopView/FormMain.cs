@@ -142,7 +142,7 @@ namespace ForgeShopView
             form.ShowDialog();
         }
 
-        private void КлиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormClients>();
             form.ShowDialog();
