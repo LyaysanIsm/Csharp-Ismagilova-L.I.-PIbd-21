@@ -1,4 +1,5 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
+using ForgeShopBusinessLogic.Enums;
 using ForgeShopBusinessLogic.Interfaces;
 using ForgeShopBusinessLogic.ViewModels;
 using ForgeShopListImplement.Models;
@@ -63,8 +64,8 @@ namespace ForgeShopListImplement.Implements
                 if (
                     model != null && Order.Id == model.Id
                     || model.DateFrom.HasValue && model.DateTo.HasValue && Order.DateCreate >= model.DateFrom && Order.DateCreate <= model.DateTo
-                    || model.ClientId.HasValue && Order.ClientId == model.ClientId
-                )
+                    || model.ClientId.HasValue && Order.ClientId == model.ClientId || model.FreeOrders.HasValue && model.FreeOrders.Value
+                    || model.ImplementerId.HasValue && Order.ImplementerId == model.ImplementerId && Order.Status == OrderStatus.Выполняется)
                 {
                     result.Add(CreateViewModel(Order));
                     break;
@@ -78,6 +79,7 @@ namespace ForgeShopListImplement.Implements
         {
             Order.ForgeProductId = model.ForgeProductId == 0 ? Order.ForgeProductId : model.ForgeProductId;
             Order.ClientId = (int)model.ClientId;
+            Order.ImplementerId = model.ImplementerId;
             Order.Count = model.Count;
             Order.Sum = model.Sum;
             Order.Status = model.Status;

@@ -7,6 +7,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
     public class MainLogic
     {
         private readonly IOrderLogic orderLogic;
+        private readonly object locker = new object();
         public MainLogic(IOrderLogic orderLogic)
         {
             this.orderLogic = orderLogic;
@@ -14,7 +15,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         public void CreateOrder(CreateOrderBindingModel model)
         {
             orderLogic.CreateOrUpdate(new OrderBindingModel
-            {                
+            {
                 ClientId = model.ClientId,
                 ForgeProductId = model.ForgeProductId,
                 Count = model.Count,
@@ -25,29 +26,37 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         }
         public void TakeOrderInWork(ChangeStatusBindingModel model)
         {
-            var order = orderLogic.Read(new OrderBindingModel
+            lock (locker)
             {
-                Id = model.OrderId
-            })?[0];
-            if (order == null)
-            {
-                throw new Exception("Не найден заказ");
+                var order = orderLogic.Read(new OrderBindingModel
+                {
+                    Id = model.OrderId
+                })?[0];
+                if (order == null)
+                {
+                    throw new Exception("Не найден заказ");
+                }
+                if (order.Status != OrderStatus.Принят)
+                {
+                    throw new Exception("Заказ не в статусе \"Принят\"");
+                }
+                if (order.ImplementerId.HasValue)
+                {
+                    throw new Exception("У заказа уже есть исполнитель");
+                }
+                orderLogic.CreateOrUpdate(new OrderBindingModel
+                {
+                    Id = order.Id,
+                    ClientId = order.ClientId,
+                    ImplementerId = model.ImplementerId,
+                    ForgeProductId = order.ForgeProductId,
+                    Count = order.Count,
+                    Sum = order.Sum,
+                    DateCreate = order.DateCreate,
+                    DateImplement = DateTime.Now,
+                    Status = OrderStatus.Выполняется
+                });
             }
-            if (order.Status != OrderStatus.Принят)
-            {
-                throw new Exception("Заказ не в статусе \"Принят\"");
-            }
-            orderLogic.CreateOrUpdate(new OrderBindingModel
-            {
-                Id = order.Id,               
-                ClientId = order.ClientId,
-                ForgeProductId = order.ForgeProductId,
-                Count = order.Count,
-                Sum = order.Sum,
-                DateCreate = order.DateCreate,
-                DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется
-            });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
         {
@@ -68,6 +77,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 Id = order.Id,
                 ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
+                ImplementerId = order.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -93,6 +103,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 ClientId = order.ClientId,
+                ImplementerId = order.ImplementerId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,

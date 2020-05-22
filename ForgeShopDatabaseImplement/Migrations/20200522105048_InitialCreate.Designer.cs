@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForgeShopDatabaseImplement.Migrations
 {
     [DbContext(typeof(ForgeShopDatabase))]
-    [Migration("20200502130605_InitialCreate")]
+    [Migration("20200522105048_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,6 +105,27 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.ToTable("ForgeProductBillets");
                 });
 
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Implementer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImplementerFIO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PauseTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkingTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Implementers");
+                });
+
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -127,6 +148,9 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.Property<int>("ForgeProductId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ImplementerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -138,6 +162,8 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("ForgeProductId");
+
+                    b.HasIndex("ImplementerId");
 
                     b.ToTable("Orders");
                 });
@@ -170,6 +196,10 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .HasForeignKey("ForgeProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Implementer", "Implementer")
+                        .WithMany()
+                        .HasForeignKey("ImplementerId");
                 });
 #pragma warning restore 612, 618
         }

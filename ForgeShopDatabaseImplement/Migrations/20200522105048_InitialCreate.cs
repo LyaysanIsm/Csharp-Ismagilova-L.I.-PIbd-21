@@ -50,6 +50,21 @@ namespace ForgeShopDatabaseImplement.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Implementers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImplementerFIO = table.Column<string>(nullable: true),
+                    WorkingTime = table.Column<int>(nullable: false),
+                    PauseTime = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Implementers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ForgeProductBillets",
                 columns: table => new
                 {
@@ -83,6 +98,7 @@ namespace ForgeShopDatabaseImplement.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(nullable: false),
+                    ImplementerId = table.Column<int>(nullable: true),
                     ForgeProductId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
@@ -105,6 +121,12 @@ namespace ForgeShopDatabaseImplement.Migrations
                         principalTable: "ForgeProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_Implementers_ImplementerId",
+                        column: x => x.ImplementerId,
+                        principalTable: "Implementers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -126,6 +148,11 @@ namespace ForgeShopDatabaseImplement.Migrations
                 name: "IX_Orders_ForgeProductId",
                 table: "Orders",
                 column: "ForgeProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_ImplementerId",
+                table: "Orders",
+                column: "ImplementerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -144,6 +171,9 @@ namespace ForgeShopDatabaseImplement.Migrations
 
             migrationBuilder.DropTable(
                 name: "ForgeProducts");
+
+            migrationBuilder.DropTable(
+                name: "Implementers");
         }
     }
 }
