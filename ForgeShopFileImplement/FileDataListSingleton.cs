@@ -15,16 +15,19 @@ namespace ForgeShopFileImplement
         private readonly string OrderFileName = "Order.xml";
         private readonly string ForgeProductFileName = "ForgeProduct.xml";
         private readonly string ForgeProductBilletFileName = "ForgeProductBillet.xml";
+        private readonly string ClientFileName = "Client.xml";
         public List<Billet> Billets { get; set; }
         public List<Order> Orders { get; set; }
         public List<ForgeProduct> ForgeProducts { get; set; }
         public List<ForgeProductBillet> ForgeProductBillets { get; set; }
+        public List<Client> Clients { get; set; }
         private FileDataListSingleton()
         {
             Billets = LoadBillets();
             Orders = LoadOrders();
             ForgeProducts = LoadForgeProducts();
             ForgeProductBillets = LoadForgeProductBillets();
+            Clients = LoadClients();
         }
         public static FileDataListSingleton GetInstance()
         {
@@ -40,6 +43,7 @@ namespace ForgeShopFileImplement
             SaveOrders();
             SaveForgeProducts();
             SaveForgeProductBillets();
+            SaveClients();
         }
         private List<Billet> LoadBillets()
         {
@@ -71,6 +75,7 @@ namespace ForgeShopFileImplement
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         ForgeProductId = Convert.ToInt32(elem.Element("ForgeProductId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
@@ -125,6 +130,26 @@ namespace ForgeShopFileImplement
             }
             return list;
         }
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Client").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientFIO = elem.Element("ClientFIO").Value,
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value
+                    });
+                }
+            }
+            return list;
+        }
         private void SaveBillets()
         {
             if (Billets != null)
@@ -149,6 +174,7 @@ namespace ForgeShopFileImplement
                 {
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
+                    new XElement("ClientId", order.ClientId),
                     new XElement("ForgeProductId", order.ForgeProductId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),
@@ -191,6 +217,23 @@ namespace ForgeShopFileImplement
                 }
                 XDocument xDocument = new XDocument(xElement);
                 xDocument.Save(ForgeProductBilletFileName);
+            }
+        }
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("FIO", client.ClientFIO),
+                    new XElement("Email", client.Email),
+                    new XElement("Password", client.Password)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ClientFileName);
             }
         }
     }

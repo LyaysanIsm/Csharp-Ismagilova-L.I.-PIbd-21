@@ -20,5 +20,6 @@ namespace ForgeShopDatabaseImplement
         public virtual DbSet<ForgeProduct> ForgeProducts { set; get; }
         public virtual DbSet<ForgeProductBillet> ForgeProductBillets { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
+        public virtual DbSet<Client> Clients { set; get; }
     }
 }

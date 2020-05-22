@@ -9,6 +9,7 @@ namespace ForgeShopDatabaseImplement.Models
     public class Order
     {
         public int Id { get; set; }
+        public int ClientId { get; set; }        
         public int ForgeProductId { get; set; }
         [Required]
         public int Count { get; set; }
@@ -20,5 +21,6 @@ namespace ForgeShopDatabaseImplement.Models
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
         public virtual ForgeProduct ForgeProduct { get; set; }
+        public Client Client { get; set; }
     }
 }

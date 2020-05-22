@@ -49,14 +49,14 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         public List<IGrouping<DateTime, OrderViewModel>> GetOrders(ReportBindingModel model)
         {
             var list = orderLogic
-           .Read(new OrderBindingModel
-           {
-               DateFrom = model.DateFrom,
-               DateTo = model.DateTo
-           })
-            .GroupBy(rec => rec.DateCreate.Date)
-            .OrderBy(recG => recG.Key)
-            .ToList();
+          .Read(new OrderBindingModel
+          {
+              DateFrom = model.DateFrom,
+              DateTo = model.DateTo
+          })
+           .GroupBy(rec => rec.DateCreate.Date)
+           .OrderBy(recG => recG.Key)
+           .ToList();
             return list;
         }
         /// <summary>

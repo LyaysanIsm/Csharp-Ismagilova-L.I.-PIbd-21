@@ -14,11 +14,13 @@ namespace ForgeShopView
         public new IUnityContainer Container { get; set; }
         private readonly IForgeProductLogic logicF;
         private readonly MainLogic logicM;
-        public FormCreateOrder(IForgeProductLogic logicF, MainLogic logicM)
+        private readonly IClientLogic logicC;
+        public FormCreateOrder(IForgeProductLogic logicF, IClientLogic logicC, MainLogic logicM)
         {
             InitializeComponent();
             this.logicF = logicF;
             this.logicM = logicM;
+            this.logicC = logicC;
         }
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
@@ -28,6 +30,12 @@ namespace ForgeShopView
                 ComboBoxForgeProduct.DataSource = list;
                 ComboBoxForgeProduct.DisplayMember = "ForgeProductName";
                 ComboBoxForgeProduct.ValueMember = "Id";
+
+                var listC = logicC.Read(null);
+                ComboBoxClient.DisplayMember = "ClientFIO";
+                ComboBoxClient.ValueMember = "Id";
+                ComboBoxClient.DataSource = listC;
+                ComboBoxClient.SelectedItem = null;
             }
             catch (Exception ex)
             {
@@ -80,10 +88,16 @@ id
                MessageBoxIcon.Error);
                 return;
             }
+            if (ComboBoxClient.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 logicM.CreateOrder(new CreateOrderBindingModel
                 {
+                    ClientId = Convert.ToInt32(ComboBoxClient.SelectedValue),
                     ForgeProductId = Convert.ToInt32(ComboBoxForgeProduct.SelectedValue),
                     Count = Convert.ToInt32(TextBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)

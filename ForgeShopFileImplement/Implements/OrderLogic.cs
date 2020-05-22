@@ -35,6 +35,7 @@ namespace ForgeShopFileImplement.Implements
                 source.Orders.Add(element);
             }
             element.ForgeProductId = model.ForgeProductId == 0 ? element.ForgeProductId : model.ForgeProductId;
+            element.ClientId = model.ClientId == null ? element.ClientId : (int)model.ClientId;
             element.Count = model.Count;
             element.Sum = model.Sum;
             element.Status = model.Status;
@@ -57,17 +58,20 @@ namespace ForgeShopFileImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             return source.Orders
-            .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo))
-            .Select(rec => new OrderViewModel
-            {
-                Id = rec.Id,
-                ForgeProductName = GetForgeProductName(rec.ForgeProductId),
-                Count = rec.Count,
-                Sum = rec.Sum,
-                Status = rec.Status,
-                DateCreate = rec.DateCreate,
-                DateImplement = rec.DateImplement
-            })
+           .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+           || model.ClientId.HasValue && rec.ClientId == model.ClientId)
+           .Select(rec => new OrderViewModel
+           {
+               Id = rec.Id,
+               ForgeProductName = GetForgeProductName(rec.ForgeProductId),
+               ClientId = rec.ClientId,
+               ClientFIO = source.Clients.FirstOrDefault(recC => recC.Id == rec.ClientId)?.ClientFIO,
+               Count = rec.Count,
+               Sum = rec.Sum,
+               Status = rec.Status,
+               DateCreate = rec.DateCreate,
+               DateImplement = rec.DateImplement
+           })
             .ToList();
         }
 

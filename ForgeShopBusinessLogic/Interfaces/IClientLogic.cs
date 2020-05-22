@@ -1,0 +1,15 @@
+﻿using ForgeShopBusinessLogic.BindingModels;
+using ForgeShopBusinessLogic.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ForgeShopBusinessLogic.Interfaces
+{
+    public interface IClientLogic
+    {
+        List<ClientViewModel> Read(ClientBindingModel model);
+        void CreateOrUpdate(ClientBindingModel model);
+        void Delete(ClientBindingModel model);
+    }
+}

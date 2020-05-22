@@ -14,7 +14,8 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         public void CreateOrder(CreateOrderBindingModel model)
         {
             orderLogic.CreateOrUpdate(new OrderBindingModel
-            {
+            {                
+                ClientId = model.ClientId,
                 ForgeProductId = model.ForgeProductId,
                 Count = model.Count,
                 Sum = model.Sum,
@@ -38,7 +39,8 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             }
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
-                Id = order.Id,
+                Id = order.Id,               
+                ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -64,6 +66,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,
@@ -89,6 +92,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             orderLogic.CreateOrUpdate(new OrderBindingModel
             {
                 Id = order.Id,
+                ClientId = order.ClientId,
                 ForgeProductId = order.ForgeProductId,
                 Count = order.Count,
                 Sum = order.Sum,
