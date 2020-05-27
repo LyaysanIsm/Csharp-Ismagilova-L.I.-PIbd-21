@@ -44,6 +44,8 @@
             this.ButtonOrderReady = new System.Windows.Forms.Button();
             this.ButtonPayOrder = new System.Windows.Forms.Button();
             this.ButtonRef = new System.Windows.Forms.Button();
+            this.FillStoragesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StoragesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +55,8 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникиToolStripMenuItem,
             this.отчетыToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.FillStoragesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(906, 24);
@@ -65,6 +68,7 @@
             this.справочникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BilletsToolStripMenuItem,
             this.ForgeProductsToolStripMenuItem,
+            this.StoragesToolStripMenuItem,
             this.ClientsToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
@@ -186,6 +190,20 @@
             this.ButtonRef.UseVisualStyleBackColor = true;
             this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
             // 
+            // FillStoragesToolStripMenuItem
+            // 
+            this.FillStoragesToolStripMenuItem.Name = "FillStoragesToolStripMenuItem";
+            this.FillStoragesToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.FillStoragesToolStripMenuItem.Text = "Fill Storages";
+            this.FillStoragesToolStripMenuItem.Click += new System.EventHandler(this.FillStoragesToolStripMenuItem_Click);
+            // 
+            // StoragesToolStripMenuItem
+            // 
+            this.StoragesToolStripMenuItem.Name = "StoragesToolStripMenuItem";
+            this.StoragesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.StoragesToolStripMenuItem.Text = "Storages";
+            this.StoragesToolStripMenuItem.Click += new System.EventHandler(this.StoragesToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,5 +246,7 @@
         private System.Windows.Forms.ToolStripMenuItem ListForgeProductswithBilletsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StoragesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FillStoragesToolStripMenuItem;
     }
 }

@@ -104,19 +104,32 @@ namespace ForgeShopDatabaseImplement.Implements
                 }
             }
         }
-        public void DelElement(int id)
+        public void DelElement(StorageBindingModel model)
         {
             using (var context = new ForgeShopDatabase())
             {
-                var elem = context.Storages.FirstOrDefault(x => x.Id == id);
-                if (elem != null)
+                using (var transaction = context.Database.BeginTransaction())
                 {
-                    context.Storages.Remove(elem);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    throw new Exception("Элемент не найден");
+                    try
+                    {
+                        context.StorageBillets.RemoveRange(context.StorageBillets.Where(rec => rec.StorageId == model.Id));
+                        Storage element = context.Storages.FirstOrDefault(rec => rec.Id == model.Id);
+                        if (element != null)
+                        {
+                            context.Storages.Remove(element);
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            throw new Exception("Элемент не найден");
+                        }
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
                 }
             }
         }
