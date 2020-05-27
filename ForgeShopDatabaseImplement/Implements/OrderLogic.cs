@@ -64,8 +64,7 @@ model.Id);
         {
             using (var context = new ForgeShopDatabase())
             {
-                return context.Orders
-                .Where(rec => model == null
+                return context.Orders.Where(rec => model == null
                     || rec.Id == model.Id && model.Id.HasValue
                     || model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo
                     || model.ClientId.HasValue && rec.ClientId == model.ClientId
