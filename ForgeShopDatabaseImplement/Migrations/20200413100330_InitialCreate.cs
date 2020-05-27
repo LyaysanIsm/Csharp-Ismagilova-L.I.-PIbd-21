@@ -21,21 +21,6 @@ namespace ForgeShopDatabaseImplement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientFIO = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Password = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ForgeProducts",
                 columns: table => new
                 {
@@ -47,6 +32,19 @@ namespace ForgeShopDatabaseImplement.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ForgeProducts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Storages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StorageName = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Storages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,7 +80,6 @@ namespace ForgeShopDatabaseImplement.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientId = table.Column<int>(nullable: false),
                     ForgeProductId = table.Column<int>(nullable: false),
                     Count = table.Column<int>(nullable: false),
                     Sum = table.Column<decimal>(nullable: false),
@@ -94,15 +91,36 @@ namespace ForgeShopDatabaseImplement.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Clients_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Orders_ForgeProducts_ForgeProductId",
                         column: x => x.ForgeProductId,
                         principalTable: "ForgeProducts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StorageBillets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StorageId = table.Column<int>(nullable: false),
+                    BilletId = table.Column<int>(nullable: false),
+                    Count = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StorageBillets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StorageBillets_Billets_BilletId",
+                        column: x => x.BilletId,
+                        principalTable: "Billets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StorageBillets_Storages_StorageId",
+                        column: x => x.StorageId,
+                        principalTable: "Storages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -118,14 +136,19 @@ namespace ForgeShopDatabaseImplement.Migrations
                 column: "ForgeProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_ClientId",
-                table: "Orders",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Orders_ForgeProductId",
                 table: "Orders",
                 column: "ForgeProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StorageBillets_BilletId",
+                table: "StorageBillets",
+                column: "BilletId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StorageBillets_StorageId",
+                table: "StorageBillets",
+                column: "StorageId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -137,13 +160,16 @@ namespace ForgeShopDatabaseImplement.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Billets");
-
-            migrationBuilder.DropTable(
-                name: "Clients");
+                name: "StorageBillets");
 
             migrationBuilder.DropTable(
                 name: "ForgeProducts");
+
+            migrationBuilder.DropTable(
+                name: "Billets");
+
+            migrationBuilder.DropTable(
+                name: "Storages");
         }
     }
 }
