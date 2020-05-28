@@ -13,10 +13,12 @@ namespace ForgeShopBusinessLogic.BusinessLogics
     {
         private readonly IForgeProductLogic forgeproductLogic;
         private readonly IOrderLogic orderLogic;
-        public ReportLogic(IForgeProductLogic forgeproductLogic, IOrderLogic orderLLogic)
+        private readonly IStorageLogic storageLogic;
+        public ReportLogic(IForgeProductLogic forgeproductLogic, IOrderLogic orderLLogic, IStorageLogic storageLogic)
         {
             this.forgeproductLogic = forgeproductLogic;
             this.orderLogic = orderLLogic;
+            this.storageLogic = storageLogic;
         }
         /// <summary>
         /// Получение списка компонент с указанием, в каких изделиях используются
@@ -36,6 +38,26 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                         BilletName = fb.Value.Item1,
                         Count = fb.Value.Item2
                     };
+                    list.Add(record);
+                }
+            }
+            return list;
+        }
+        public List<ReportStorageBilletViewModel> GetStorageBillets()
+        {
+            var storages = storageLogic.GetList();
+            var list = new List<ReportStorageBilletViewModel>();
+            foreach (var storage in storages)
+            {
+                foreach (var sz in storage.StorageBillets)
+                {
+                    var record = new ReportStorageBilletViewModel
+                    {
+                        StorageName = storage.StorageName,
+                        BilletName = sz.BilletName,
+                        Count = sz.Count
+                    };
+
                     list.Add(record);
                 }
             }
@@ -96,6 +118,37 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 FileName = model.FileName,
                 Title = "The list forgeproducts with billets",
                 ForgeProductBillets = GetForgeProductBillet()
+            });
+        }
+        public void SaveStoragesToWordFile(ReportBindingModel model)
+        {
+            SaveToWord.CreateDoc(new WordInfo
+            {
+                FileName = model.FileName,
+                Title = "The list of storages",
+                ForgeProducts = null,
+                Storages = storageLogic.GetList()
+            });
+        }
+
+        public void SaveStorageBilletsToExcelFile(ReportBindingModel model)
+        {
+            SaveToExcel.CreateDoc(new ExcelInfo
+            {
+                FileName = model.FileName,
+                Title = "The list billets to storages",
+                Orders = null,
+                Storages = storageLogic.GetList()
+            });
+        }
+        public void SaveBilletsToPdfFile(ReportBindingModel model)
+        {
+            SaveToPdf.CreateDoc(new PdfInfo
+            {
+                FileName = model.FileName,
+                Title = "The list of billets",
+                ForgeProductBillets = null,
+                StorageBillets = GetStorageBillets()
             });
         }
     }

@@ -12,7 +12,7 @@ namespace ForgeShopDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-0755RO83\SQLEXPRESS;Initial Catalog=ForgeShopDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-0755RO83\SQLEXPRESS;Initial Catalog=ForgeShopHmDatabase;Integrated Security=True;MultipleActiveResultSets=True;");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -20,6 +20,8 @@ namespace ForgeShopDatabaseImplement
         public virtual DbSet<ForgeProduct> ForgeProducts { set; get; }
         public virtual DbSet<ForgeProductBillet> ForgeProductBillets { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
+        public virtual DbSet<Storage> Storages { set; get; }
+        public virtual DbSet<StorageBillet> StorageBillets { set; get; }
         public virtual DbSet<Client> Clients { set; get; }
     }
 }

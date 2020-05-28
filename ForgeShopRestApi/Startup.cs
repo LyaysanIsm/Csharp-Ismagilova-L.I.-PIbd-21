@@ -32,6 +32,8 @@ namespace ForgeShopRestApi
             services.AddTransient<IClientLogic, ClientLogic>();
             services.AddTransient<IOrderLogic, OrderLogic>();
             services.AddTransient<IForgeProductLogic, ForgeProductLogic>();
+            services.AddTransient<IStorageLogic, StorageLogic>();
+            services.AddTransient<IBilletLogic, BilletLogic>();
             services.AddTransient<MainLogic>();
             services.AddControllers();
         }
