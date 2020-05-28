@@ -1,4 +1,5 @@
-﻿using ForgeShopBusinessLogic.Interfaces;
+﻿using ForgeShopBusinessLogic.BindingModels;
+using ForgeShopBusinessLogic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,7 +79,7 @@ namespace ForgeShopView
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        logic.DelElement(id);
+                        logic.DelElement(new StorageBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

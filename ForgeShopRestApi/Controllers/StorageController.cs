@@ -51,7 +51,8 @@ namespace ForgeShopRestApi.Controllers
             return new StorageModel
             {
                 Id = model.Id,
-                StorageName = model.StorageName
+                StorageName = model.StorageName,
+                StorageBillets = model.StorageBillets
             };
         }
     }
