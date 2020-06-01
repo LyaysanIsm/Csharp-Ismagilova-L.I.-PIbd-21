@@ -25,7 +25,7 @@ namespace ForgeShopClientView
                 dataGridView.Columns[1].Visible = false;
                 dataGridView.Columns[2].Visible = false;
                 dataGridView.Columns[3].Visible = false;
-                dataGridView.Columns[4].Visible = false;                
+                dataGridView.Columns[4].Visible = false;
                 dataGridView.Columns[5].AutoSizeMode =
                DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -51,6 +51,11 @@ namespace ForgeShopClientView
         private void RefreshOrderListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadList();
+        }
+        private void MessagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormMessages();
+            form.ShowDialog();
         }
     }
 }
