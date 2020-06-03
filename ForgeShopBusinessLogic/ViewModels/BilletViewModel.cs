@@ -1,14 +1,20 @@
-﻿using System.ComponentModel;
+﻿using ForgeShopBusinessLogic.Attributes;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ForgeShopBusinessLogic.ViewModels
 {
     /// <summary>
     /// Компонент, требуемый для изготовления изделия
     /// </summary>
-    public class BilletViewModel
+    public class BilletViewModel : BaseViewModel
     {
-        public int Id { get; set; }
-        [DisplayName("Название компонента")]
+        [Column(title: "Компонент", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string BilletName { get; set; }
+        public override List<string> Properties() => new List<string>
+        {
+            "Id",
+            "BilletName"
+        };
     }
 }
