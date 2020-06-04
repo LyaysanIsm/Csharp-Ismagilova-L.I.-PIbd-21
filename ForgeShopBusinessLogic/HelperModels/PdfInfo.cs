@@ -10,5 +10,6 @@ namespace ForgeShopBusinessLogic.HelperModels
         public string FileName { get; set; }
         public string Title { get; set; }
         public List<ReportForgeProductBilletViewModel> ForgeProductBillets { get; set; }
+        public List<ReportStorageBilletViewModel> StorageBillets { get; set; }
     }
 }

@@ -28,6 +28,8 @@ namespace ForgeShopView
 HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrderLogic, OrderLogic>(new
            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorageLogic, StorageLogic>(new
+          HierarchicalLifetimeManager());
             currentContainer.RegisterType<IForgeProductLogic, ForgeProductLogic>(new
            HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());
