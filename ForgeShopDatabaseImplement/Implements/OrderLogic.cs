@@ -1,4 +1,5 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
+using ForgeShopBusinessLogic.Enums;
 using ForgeShopBusinessLogic.Interfaces;
 using ForgeShopBusinessLogic.ViewModels;
 using ForgeShopDatabaseImplement.Models;
@@ -31,7 +32,8 @@ namespace ForgeShopDatabaseImplement.Implements
                     element = new Order();
                     context.Orders.Add(element);
                 }
-                element.ClientId = model.ClientId == null ? element.ClientId : (int)model.ClientId;
+                element.ClientId = model.ClientId.Value;
+                element.ImplementerId = model.ImplementerId;
                 element.ForgeProductId = model.ForgeProductId == 0 ? element.ForgeProductId : model.ForgeProductId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
@@ -62,16 +64,17 @@ model.Id);
         {
             using (var context = new ForgeShopDatabase())
             {
-                return context.Orders
-                .Where(rec => model == null || (rec.Id == model.Id && model.Id.HasValue)
-                || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
-                (model.ClientId.HasValue && rec.ClientId == model.ClientId))
-                .Include(rec => rec.ForgeProduct)
-                .Include(rec => rec.Client)
+                return context.Orders.Where(rec => model == null
+                    || rec.Id == model.Id && model.Id.HasValue
+                    || model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo
+                    || model.ClientId.HasValue && rec.ClientId == model.ClientId
+                    || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
+                    || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется)
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
                     ClientId = rec.ClientId,
+                    ImplementerId = rec.ImplementerId,
                     ForgeProductId = rec.ForgeProductId,
                     Count = rec.Count,
                     Sum = rec.Sum,
@@ -79,7 +82,9 @@ model.Id);
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
                     ForgeProductName = rec.ForgeProduct.ForgeProductName,
-                    ClientFIO = rec.Client.ClientFIO
+                    ClientFIO = rec.Client.ClientFIO,
+                    ImplementerFIO = rec.ImplementerId.HasValue ?
+                rec.Implementer.ImplementerFIO : string.Empty
                 })
             .ToList();
             }

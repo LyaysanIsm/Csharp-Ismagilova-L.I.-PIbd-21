@@ -11,6 +11,7 @@ namespace ForgeShopListImplement
         public List<ForgeProduct> ForgeProducts { get; set; }
         public List<ForgeProductBillet> ForgeProductBillets { get; set; }
         public List<Client> Clients { get; set; }
+        public List<Implementer> Implementers { get; set; }
         private DataListSingleton()
         {
             Billets = new List<Billet>();
@@ -18,6 +19,7 @@ namespace ForgeShopListImplement
             ForgeProducts = new List<ForgeProduct>();
             ForgeProductBillets = new List<ForgeProductBillet>();
             Clients = new List<Client>();
+            Implementers = new List<Implementer>();
         }
         public static DataListSingleton GetInstance()
         {

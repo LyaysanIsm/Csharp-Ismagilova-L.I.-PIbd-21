@@ -1,4 +1,5 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
+using ForgeShopBusinessLogic.Enums;
 using ForgeShopBusinessLogic.Interfaces;
 using ForgeShopBusinessLogic.ViewModels;
 using ForgeShopListImplement.Models;
@@ -58,18 +59,21 @@ namespace ForgeShopListImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             List<OrderViewModel> result = new List<OrderViewModel>();
-            foreach (var Order in source.Orders)
+            foreach (var order in source.Orders)
             {
-                if (
-                    model != null && Order.Id == model.Id
-                    || model.DateFrom.HasValue && model.DateTo.HasValue && Order.DateCreate >= model.DateFrom && Order.DateCreate <= model.DateTo
-                    || model.ClientId.HasValue && Order.ClientId == model.ClientId
-                )
+                if (model != null)
                 {
-                    result.Add(CreateViewModel(Order));
-                    break;
+                    if (order.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
+                        || model.ClientId.HasValue && order.ClientId == model.ClientId
+                        || model.FreeOrders.HasValue && model.FreeOrders.Value
+                    || model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Выполняется)
+                    {
+                        result.Add(CreateViewModel(order));
+                        break;
+                    }
+                    continue;
                 }
-                result.Add(CreateViewModel(Order));
+                result.Add(CreateViewModel(order));
             }
             return result;
         }
@@ -78,6 +82,7 @@ namespace ForgeShopListImplement.Implements
         {
             Order.ForgeProductId = model.ForgeProductId == 0 ? Order.ForgeProductId : model.ForgeProductId;
             Order.ClientId = (int)model.ClientId;
+            Order.ImplementerId = model.ImplementerId;
             Order.Count = model.Count;
             Order.Sum = model.Sum;
             Order.Status = model.Status;
