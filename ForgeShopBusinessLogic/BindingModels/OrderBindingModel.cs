@@ -22,5 +22,6 @@ namespace ForgeShopBusinessLogic.BindingModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
         public bool? FreeOrders { get; set; }
+        public bool? NotEnoughMaterialsOrders { get; set; }
     }
 }
