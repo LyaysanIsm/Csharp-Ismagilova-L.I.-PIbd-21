@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForgeShopDatabaseImplement.Migrations
 {
     [DbContext(typeof(ForgeShopDatabase))]
-    [Migration("20200522105048_InitialCreate")]
+    [Migration("20200601112814_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -126,6 +126,33 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.ToTable("Implementers");
                 });
 
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.MessageInfo", b =>
+                {
+                    b.Property<string>("MessageId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateDelivery")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("MessageInfoes");
+                });
+
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -183,6 +210,13 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.MessageInfo", b =>
+                {
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Client", "Client")
+                        .WithMany("MessageInfoes")
+                        .HasForeignKey("ClientId");
+                });
+
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Order", b =>
                 {
                     b.HasOne("ForgeShopDatabaseImplement.Models.Client", "Client")
@@ -198,7 +232,7 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .IsRequired();
 
                     b.HasOne("ForgeShopDatabaseImplement.Models.Implementer", "Implementer")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ImplementerId");
                 });
 #pragma warning restore 612, 618
