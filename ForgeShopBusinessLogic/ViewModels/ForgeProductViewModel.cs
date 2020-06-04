@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ForgeShopBusinessLogic.Attributes;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -8,17 +9,21 @@ namespace ForgeShopBusinessLogic.ViewModels
     /// Изделие, изготавливаемое в магазине
     /// </summary>
     [DataContract]
-    public class ForgeProductViewModel
+    public class ForgeProductViewModel : BaseViewModel
     {
+        [Column(title: "Название изделия", gridViewAutoSize: GridViewAutoSize.Fill)]
         [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        [DisplayName("Название изделия")]
         public string ForgeProductName { get; set; }
+        [Column(title: "Цена", width: 50)]
         [DataMember]
-        [DisplayName("Цена")]
         public decimal Price { get; set; }
         [DataMember]
         public Dictionary<int, (string, int)> ForgeProductBillets { get; set; }
+        public override List<string> Properties() => new List<string>
+        {
+            "Id",
+            "ForgeProductName",
+            "Price"
+        };
     }
 }
