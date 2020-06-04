@@ -63,11 +63,36 @@ namespace ForgeShopListImplement.Implements
             {
                 if (model != null)
                 {
-                    if (order.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
-                        || model.ClientId.HasValue && order.ClientId == model.ClientId
-                        || model.FreeOrders.HasValue && model.FreeOrders.Value
-                    || model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Выполняется)
+                    if (order.Id == model.Id)
                     {
+                        if (model.DateFrom.HasValue && model.DateTo.HasValue && order.DateCreate >= model.DateFrom && order.DateCreate <= model.DateTo)
+                        {
+                            result.Add(CreateViewModel(order));
+                            continue;
+                        }
+                        if (model.ClientId == order.ClientId)
+                        {
+                            result.Add(CreateViewModel(order));
+                            continue;
+                        }
+                        if (model.ImplementerId.HasValue && order.ImplementerId == model.ImplementerId && order.Status == OrderStatus.Выполняется)
+                        {
+                            result.Add(CreateViewModel(order));
+                            continue;
+                        }
+                        if (model.FreeOrders.HasValue && model.FreeOrders.Value && !order.ImplementerId.HasValue)
+                        {
+                            result.Add(CreateViewModel(order));
+                            continue;
+                        }
+                        if (model.Status == order.Status)
+                            if (model.NotEnoughBilletsOrders.HasValue &&
+                                model.NotEnoughBilletsOrders.Value &&
+                                order.Status == OrderStatus.Требуются_материалы)
+                            {
+                                result.Add(CreateViewModel(order));
+                                continue;
+                            }
                         result.Add(CreateViewModel(order));
                         break;
                     }
@@ -77,7 +102,6 @@ namespace ForgeShopListImplement.Implements
             }
             return result;
         }
-
         private Order CreateModel(OrderBindingModel model, Order Order)
         {
             Order.ForgeProductId = model.ForgeProductId == 0 ? Order.ForgeProductId : model.ForgeProductId;

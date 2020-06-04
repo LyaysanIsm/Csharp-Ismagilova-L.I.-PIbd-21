@@ -12,6 +12,7 @@ namespace ForgeShopBusinessLogic.BindingModels
     {
         public int? Id { get; set; }
         public int? ClientId { get; set; }
+        public string ClientFIO { set; get; }
         public int ForgeProductId { get; set; }
         public int? ImplementerId { get; set; }
         public int Count { get; set; }
@@ -22,6 +23,6 @@ namespace ForgeShopBusinessLogic.BindingModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
         public bool? FreeOrders { get; set; }
-        public bool? NotEnoughMaterialsOrders { get; set; }
+        public bool? NotEnoughBilletsOrders { get; set; }
     }
 }

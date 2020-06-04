@@ -70,7 +70,7 @@ model.Id);
                     || model.ClientId.HasValue && rec.ClientId == model.ClientId
                     || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
                     || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется
-                    || model.NotEnoughMaterialsOrders.HasValue && model.NotEnoughMaterialsOrders.Value && rec.Status == OrderStatus.Требуются_материалы)
+                    || model.NotEnoughBilletsOrders.HasValue && model.NotEnoughBilletsOrders.Value && rec.Status == OrderStatus.Требуются_материалы)
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
@@ -84,8 +84,7 @@ model.Id);
                     DateImplement = rec.DateImplement,
                     ForgeProductName = rec.ForgeProduct.ForgeProductName,
                     ClientFIO = rec.Client.ClientFIO,
-                    ImplementerFIO = rec.ImplementerId.HasValue ?
-                rec.Implementer.ImplementerFIO : string.Empty
+                    ImplementerFIO = rec.Implementer.ImplementerFIO,
                 })
             .ToList();
             }

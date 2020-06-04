@@ -46,19 +46,28 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 {
                     throw new Exception("У заказа уже есть исполнитель");
                 }
-                storageLogic.RemoveFromStorage(order);
-                orderLogic.CreateOrUpdate(new OrderBindingModel
+                var orderModel = new OrderBindingModel
                 {
                     Id = order.Id,
-                    ClientId = order.ClientId,
-                    ImplementerId = model.ImplementerId,
                     ForgeProductId = order.ForgeProductId,
                     Count = order.Count,
                     Sum = order.Sum,
-                    DateCreate = order.DateCreate,
-                    DateImplement = DateTime.Now,
-                    Status = OrderStatus.Выполняется
-                });
+                    ClientId = order.ClientId,
+                    ClientFIO = order.ClientFIO,
+                    DateCreate = order.DateCreate
+                };
+                try
+                {
+                    storageLogic.RemoveFromStorage(order);
+                    orderModel.DateImplement = DateTime.Now;
+                    orderModel.Status = OrderStatus.Выполняется;
+                    orderModel.ImplementerId = model.ImplementerId;
+                }
+                catch
+                {
+                    orderModel.Status = OrderStatus.Требуются_материалы;
+                }
+                orderLogic.CreateOrUpdate(orderModel);
             }
         }
         public void FinishOrder(ChangeStatusBindingModel model)
