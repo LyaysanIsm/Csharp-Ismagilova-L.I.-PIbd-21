@@ -94,7 +94,7 @@
             this.ButtonCancel.Name = "ButtonCancel";
             this.ButtonCancel.Size = new System.Drawing.Size(97, 23);
             this.ButtonCancel.TabIndex = 6;
-            this.ButtonCancel.Text = "Cancel";
+            this.ButtonCancel.Text = "Отмена";
             this.ButtonCancel.UseVisualStyleBackColor = true;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
@@ -104,7 +104,7 @@
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Size = new System.Drawing.Size(96, 23);
             this.ButtonSave.TabIndex = 7;
-            this.ButtonSave.Text = "Save";
+            this.ButtonSave.Text = "Сохранить";
             this.ButtonSave.UseVisualStyleBackColor = true;
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 

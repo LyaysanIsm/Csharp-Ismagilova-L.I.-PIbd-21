@@ -114,7 +114,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "A",
                             RowIndex = rowIndex,
-                            Text = "General Sum:",
+                            Text = "Общая сумма:",
                             StyleIndex = 0U
                         });
 
@@ -179,7 +179,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "A",
                             RowIndex = rowIndex,
-                            Text = "Итого",
+                            Text = "Итого:",
                             StyleIndex = 0U
                         });
 

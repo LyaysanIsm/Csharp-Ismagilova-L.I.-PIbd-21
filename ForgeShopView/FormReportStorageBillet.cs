@@ -69,7 +69,7 @@ namespace ForgeShopView
                             dataGridView.Rows.Add(new object[] { "", billet.BilletName, billet.Count });
                             billetsSum += billet.Count;
                         }
-                        dataGridView.Rows.Add(new object[] { "Итого", "", billetsSum });
+                        dataGridView.Rows.Add(new object[] { "Итого:", "", billetsSum });
                         dataGridView.Rows.Add(new object[] { });
                     }
                 }

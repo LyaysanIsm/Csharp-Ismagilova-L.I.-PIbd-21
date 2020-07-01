@@ -30,7 +30,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 CreateRow(new PdfRowParameters
                 {
                     Table = table,
-                    Texts = new List<string> { "Billet", "ForgeProduct", "Count" },
+                    Texts = new List<string> { "Заготовка", "Изделие", "Количество" },
                     Style = "NormalTitle",
                     ParagraphAlignment = ParagraphAlignment.Center
                 });
@@ -56,7 +56,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 CreateRow(new PdfRowParameters
                 {
                     Table = table,
-                    Texts = new List<string> { "Billet", "Storage", "Count" },
+                    Texts = new List<string> { "Заготовка", "Склад", "Количество" },
                     Style = "NormalTitle",
                     ParagraphAlignment = ParagraphAlignment.Center
                 });
