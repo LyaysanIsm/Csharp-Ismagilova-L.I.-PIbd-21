@@ -23,7 +23,7 @@ namespace ForgeShopFileImplement.Implements
             Client element = source.Clients.FirstOrDefault(rec => rec.Email == model.Email && rec.Id != model.Id);
             if (element != null)
             {
-                throw new Exception("Уже есть компонент с таким названием");
+                throw new Exception("Уже есть клиент с таким логином");
             }
             if (model.Id.HasValue)
             {
@@ -62,8 +62,8 @@ namespace ForgeShopFileImplement.Implements
             return source.Clients
             .Where(
                 rec => model == null
-                || rec.Id == model.Id
-                || rec.Email == model.Email && rec.Password == model.Password
+                || (rec.Id == model.Id)
+                || (rec.Email == model.Email && rec.Password == model.Password)
             )
             .Select(rec => new ClientViewModel
             {

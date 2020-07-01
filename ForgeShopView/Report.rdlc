@@ -48,7 +48,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Orders</Value>
+                    <Value>Заказы</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>18pt</FontSize>

@@ -1,5 +1,6 @@
 ﻿using ForgeShopBusinessLogic.BindingModels;
-using ForgeShopBusinessLogic.BusinessLogics;using ForgeShopBusinessLogic.Interfaces;
+using ForgeShopBusinessLogic.BusinessLogics;
+using ForgeShopBusinessLogic.Interfaces;
 using System;
 using System.Windows.Forms;
 using Unity;
@@ -40,22 +41,22 @@ namespace ForgeShopView
                MessageBoxIcon.Error);
             }
         }
-        private void BilletsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ЗаготовкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormBillets>();
             form.ShowDialog();
         }
-        private void ForgeProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ИзделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormForgeProducts>();
             form.ShowDialog();
         }
-        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void КлиентыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormClients>();
             form.ShowDialog();
         }
-        private void ImplementersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ИсполнителиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormImplementers>();
             form.ShowDialog();
@@ -87,7 +88,7 @@ namespace ForgeShopView
         {
             LoadData();
         }
-        private void ListOfForgeProductsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СписокИзделийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })
             {
@@ -103,12 +104,12 @@ namespace ForgeShopView
                 }
             }
         }
-        private void ListOfOrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СписокЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportOrders>();
             form.ShowDialog();
         }
-        private void ListForgeProductswithBilletsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СписокИзделийпоЗаготовкамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormReportForgeProductBillets>();
             form.ShowDialog();
@@ -119,7 +120,7 @@ namespace ForgeShopView
             LoadData();
         }
 
-        private void MessagesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СообщенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormMessages>();
             form.ShowDialog();

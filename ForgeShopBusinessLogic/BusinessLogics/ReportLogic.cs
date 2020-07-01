@@ -68,7 +68,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "The list of forgeproducts",
+                Title = "Список изделий",
                 ForgeProducts = forgeproductLogic.Read(null)
             });
         }
@@ -81,7 +81,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "The list of orders",
+                Title = "Список заказов",
                 Orders = GetOrders(model)
             });
         }
@@ -94,7 +94,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "The list forgeproducts with billets",
+                Title = "Список заготовок по изделиям",
                 ForgeProductBillets = GetForgeProductBillet()
             });
         }

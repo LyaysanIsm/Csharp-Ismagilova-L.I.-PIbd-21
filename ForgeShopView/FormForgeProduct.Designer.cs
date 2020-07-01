@@ -38,11 +38,11 @@
             this.ButtonUpd = new System.Windows.Forms.Button();
             this.ButtonAdd = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ButtonSave = new System.Windows.Forms.Button();
             this.ButtonCancel = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columnnamebilet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Columncount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxBillet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -52,18 +52,18 @@
             this.labelname.AutoSize = true;
             this.labelname.Location = new System.Drawing.Point(19, 26);
             this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(38, 13);
+            this.labelname.Size = new System.Drawing.Size(60, 13);
             this.labelname.TabIndex = 0;
-            this.labelname.Text = "Name:";
+            this.labelname.Text = "Название:";
             // 
             // labelprice
             // 
             this.labelprice.AutoSize = true;
-            this.labelprice.Location = new System.Drawing.Point(19, 54);
+            this.labelprice.Location = new System.Drawing.Point(19, 57);
             this.labelprice.Name = "labelprice";
-            this.labelprice.Size = new System.Drawing.Size(34, 13);
+            this.labelprice.Size = new System.Drawing.Size(36, 13);
             this.labelprice.TabIndex = 1;
-            this.labelprice.Text = "Price:";
+            this.labelprice.Text = "Цена:";
             // 
             // textBoxName
             // 
@@ -91,7 +91,7 @@
             this.groupBoxBillet.Size = new System.Drawing.Size(481, 247);
             this.groupBoxBillet.TabIndex = 4;
             this.groupBoxBillet.TabStop = false;
-            this.groupBoxBillet.Text = "Billets";
+            this.groupBoxBillet.Text = "Заготовки";
             // 
             // ButtonRef
             // 
@@ -139,29 +139,12 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
-            this.Column3});
+            this.Columnnamebilet,
+            this.Columncount});
             this.dataGridView.Location = new System.Drawing.Point(6, 19);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(349, 222);
             this.dataGridView.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Name Billet";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Count";
-            this.Column3.Name = "Column3";
             // 
             // ButtonSave
             // 
@@ -183,6 +166,23 @@
             this.ButtonCancel.UseVisualStyleBackColor = true;
             this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Columnnamebilet
+            // 
+            this.Columnnamebilet.HeaderText = "Название заготовки";
+            this.Columnnamebilet.Name = "Columnnamebilet";
+            // 
+            // Columncount
+            // 
+            this.Columncount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Columncount.HeaderText = "Количество";
+            this.Columncount.Name = "Columncount";
+            // 
             // FormForgeProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,7 +196,7 @@
             this.Controls.Add(this.labelprice);
             this.Controls.Add(this.labelname);
             this.Name = "FormForgeProduct";
-            this.Text = "Forge Product";
+            this.Text = "Изделие";
             this.Load += new System.EventHandler(this.FormForgeProduct_Load);
             this.groupBoxBillet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
@@ -220,7 +220,7 @@
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columnnamebilet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Columncount;
     }
 }

@@ -25,9 +25,9 @@ namespace ForgeShopClientView
                 dataGridView.Columns[1].Visible = false;
                 dataGridView.Columns[2].Visible = false;
                 dataGridView.Columns[3].Visible = false;
-                dataGridView.Columns[4].Visible = false;
-                dataGridView.Columns[5].AutoSizeMode =
-               DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView.Columns[11].Visible = false;
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace ForgeShopClientView
         {
             LoadList();
         }
-        private void MessagesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void СообщенияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new FormMessages();
             form.ShowDialog();

@@ -98,7 +98,7 @@
             this.Controls.Add(this.ButtonAdd);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormForgeProducts";
-            this.Text = "Forge Products";
+            this.Text = "Изделия";
             this.Load += new System.EventHandler(this.FormForgeProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

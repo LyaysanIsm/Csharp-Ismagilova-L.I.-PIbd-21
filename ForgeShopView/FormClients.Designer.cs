@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.buttonDel = new System.Windows.Forms.Button();
-            this.buttonRef = new System.Windows.Forms.Button();
+            this.ButtonDel = new System.Windows.Forms.Button();
+            this.ButtonRef = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,36 +43,36 @@
             this.dataGridView.Size = new System.Drawing.Size(394, 426);
             this.dataGridView.TabIndex = 0;
             // 
-            // buttonDel
+            // ButtonDel
             // 
-            this.buttonDel.Location = new System.Drawing.Point(412, 12);
-            this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(109, 23);
-            this.buttonDel.TabIndex = 1;
-            this.buttonDel.Text = "Delete";
-            this.buttonDel.UseVisualStyleBackColor = true;
-            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
+            this.ButtonDel.Location = new System.Drawing.Point(412, 28);
+            this.ButtonDel.Name = "ButtonDel";
+            this.ButtonDel.Size = new System.Drawing.Size(109, 30);
+            this.ButtonDel.TabIndex = 1;
+            this.ButtonDel.Text = "Удалить";
+            this.ButtonDel.UseVisualStyleBackColor = true;
+            this.ButtonDel.Click += new System.EventHandler(this.ButtonDel_Click);
             // 
-            // buttonRef
+            // ButtonRef
             // 
-            this.buttonRef.Location = new System.Drawing.Point(412, 41);
-            this.buttonRef.Name = "buttonRef";
-            this.buttonRef.Size = new System.Drawing.Size(109, 23);
-            this.buttonRef.TabIndex = 2;
-            this.buttonRef.Text = "Refresh";
-            this.buttonRef.UseVisualStyleBackColor = true;
-            this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
+            this.ButtonRef.Location = new System.Drawing.Point(412, 75);
+            this.ButtonRef.Name = "ButtonRef";
+            this.ButtonRef.Size = new System.Drawing.Size(109, 30);
+            this.ButtonRef.TabIndex = 2;
+            this.ButtonRef.Text = "Обновить";
+            this.ButtonRef.UseVisualStyleBackColor = true;
+            this.ButtonRef.Click += new System.EventHandler(this.ButtonRef_Click);
             // 
             // FormClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 450);
-            this.Controls.Add(this.buttonRef);
-            this.Controls.Add(this.buttonDel);
+            this.Controls.Add(this.ButtonRef);
+            this.Controls.Add(this.ButtonDel);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormClients";
-            this.Text = "Clients";
+            this.Text = "Клиенты";
             this.Load += new System.EventHandler(this.FormClients_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -82,7 +82,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button buttonDel;
-        private System.Windows.Forms.Button buttonRef;
+        private System.Windows.Forms.Button ButtonDel;
+        private System.Windows.Forms.Button ButtonRef;
     }
 }

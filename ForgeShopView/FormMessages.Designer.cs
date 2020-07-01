@@ -36,11 +36,10 @@
             // 
             this.dataGridView.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.GridColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView.Location = new System.Drawing.Point(12, 7);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(870, 334);
-            this.dataGridView.TabIndex = 0;            
+            this.dataGridView.TabIndex = 0;
             // 
             // FormMessages
             // 
@@ -49,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(894, 353);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormMessages";
-            this.Text = "Messages";
+            this.Text = "Сообщения";
             this.Load += new System.EventHandler(this.FormMessages_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
