@@ -94,7 +94,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "Список заготовок по изделиям",
+                Title = "Список изделий по заготовкам",
                 ForgeProductBillets = GetForgeProductBillet()
             });
         }
