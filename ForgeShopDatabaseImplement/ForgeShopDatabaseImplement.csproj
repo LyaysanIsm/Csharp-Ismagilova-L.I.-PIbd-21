@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200312173727_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200312173727_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200416162255_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200416162255_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200417053732_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200417053732_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200502130605_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200502130605_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200522105048_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200522105048_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ForgeShopBusinessLogic\ForgeShopBusinessLogic.csproj" />
+  </ItemGroup>
+
+</Project>
