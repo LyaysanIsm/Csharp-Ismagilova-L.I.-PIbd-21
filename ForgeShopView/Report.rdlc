@@ -48,7 +48,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Заказы</Value>
+                    <Value>Изделия по заготовкам</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -61,9 +61,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Left>8.35766cm</Left>
+            <Left>6.79662cm</Left>
             <Height>0.76412cm</Height>
-            <Width>3.71708cm</Width>
+            <Width>6.945cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -100,7 +100,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ForgeProduct</Value>
+                                  <Value>Изделие</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -128,7 +128,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Billet</Value>
+                                  <Value>Заготовка</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -157,7 +157,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Count</Value>
+                                  <Value>Количество</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

@@ -74,7 +74,7 @@ namespace ForgeShopView
                             dataGridView.Rows.Add(new object[] { "", order.ForgeProductName, order.Sum });
                             GenSum += order.Sum;
                         }
-                        dataGridView.Rows.Add(new object[] { "General Sum:", "", GenSum });
+                        dataGridView.Rows.Add(new object[] { "Общая сумма:", "", GenSum });
                     }
                 }
             }

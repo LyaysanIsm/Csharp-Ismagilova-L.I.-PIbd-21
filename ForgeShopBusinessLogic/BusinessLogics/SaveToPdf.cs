@@ -28,7 +28,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             CreateRow(new PdfRowParameters
             {
                 Table = table,
-                Texts = new List<string> { "ForgeProduct", "Billet", "Count" },
+                Texts = new List<string> { "Изделие", "Заготовка", "Количество" },
                 Style = "NormalTitle",
                 ParagraphAlignment = ParagraphAlignment.Center
             });
