@@ -7,7 +7,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>29894467-bdff-4f1e-9ec2-a38c515fb5a0</rd:DataSourceID>
+      <rd:DataSourceID>45642465-dc21-4773-a1cc-9b489a515151</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -48,7 +48,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Orders</Value>
+                    <Value>Список изделий по заготовкам</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -61,9 +61,9 @@
                 </Style>
               </Paragraph>
             </Paragraphs>
-            <Left>8.35766cm</Left>
-            <Height>0.76412cm</Height>
-            <Width>3.71708cm</Width>
+            <Left>5.87058cm</Left>
+            <Height>0.89613cm</Height>
+            <Width>9.39619cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -100,7 +100,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ForgeProduct</Value>
+                                  <Value>Изделие</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -128,7 +128,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Billet</Value>
+                                  <Value>Заготовка</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -157,7 +157,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Count</Value>
+                                  <Value>Количество</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

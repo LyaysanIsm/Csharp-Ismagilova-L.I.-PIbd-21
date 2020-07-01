@@ -60,7 +60,7 @@
             this.ButtonSaveToExcel.Name = "ButtonSaveToExcel";
             this.ButtonSaveToExcel.Size = new System.Drawing.Size(122, 26);
             this.ButtonSaveToExcel.TabIndex = 1;
-            this.ButtonSaveToExcel.Text = "Save to Excel";
+            this.ButtonSaveToExcel.Text = "Сохранить в Excel";
             this.ButtonSaveToExcel.UseVisualStyleBackColor = true;
             this.ButtonSaveToExcel.Click += new System.EventHandler(this.ButtonSaveToExcel_Click);
             // 
@@ -108,18 +108,18 @@
             // 
             // ColumnDateCreate
             // 
-            this.ColumnDateCreate.HeaderText = "DateCreate";
+            this.ColumnDateCreate.HeaderText = "Дата создания";
             this.ColumnDateCreate.Name = "ColumnDateCreate";
             this.ColumnDateCreate.Width = 120;
             // 
             // Columnforgeproduct
             // 
-            this.Columnforgeproduct.HeaderText = "Forge Product";
+            this.Columnforgeproduct.HeaderText = "Изделие";
             this.Columnforgeproduct.Name = "Columnforgeproduct";
             // 
             // ColumnSum
             // 
-            this.ColumnSum.HeaderText = "Sum";
+            this.ColumnSum.HeaderText = "Сумма";
             this.ColumnSum.Name = "ColumnSum";
             // 
             // FormReportOrders
@@ -135,7 +135,7 @@
             this.Controls.Add(this.ButtonSaveToExcel);
             this.Controls.Add(this.dataGridView);
             this.Name = "FormReportOrders";
-            this.Text = "Report Orders";
+            this.Text = "Отчет по заказам";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

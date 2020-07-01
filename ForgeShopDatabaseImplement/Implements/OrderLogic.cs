@@ -65,11 +65,12 @@ model.Id);
             using (var context = new ForgeShopDatabase())
             {
                 return context.Orders.Where(rec => model == null
-                    || rec.Id == model.Id && model.Id.HasValue
-                    || model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo
-                    || model.ClientId.HasValue && rec.ClientId == model.ClientId
-                    || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
-                    || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется)
+                    || (rec.Id == model.Id && model.Id.HasValue)
+                    || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
+                    || (model.ClientId.HasValue && rec.ClientId == model.ClientId)
+                    || (model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue)
+                    || (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется)
+                    || (model.NotEnoughBilletsOrders.HasValue && model.NotEnoughBilletsOrders.Value && rec.Status == OrderStatus.Требуются_заготовки))
                 .Select(rec => new OrderViewModel
                 {
                     Id = rec.Id,
@@ -83,8 +84,7 @@ model.Id);
                     DateImplement = rec.DateImplement,
                     ForgeProductName = rec.ForgeProduct.ForgeProductName,
                     ClientFIO = rec.Client.ClientFIO,
-                    ImplementerFIO = rec.ImplementerId.HasValue ?
-                rec.Implementer.ImplementerFIO : string.Empty
+                    ImplementerFIO = rec.Implementer.ImplementerFIO,
                 })
             .ToList();
             }

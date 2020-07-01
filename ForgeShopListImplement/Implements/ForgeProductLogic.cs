@@ -14,7 +14,6 @@ namespace ForgeShopListImplement.Implements
         {
             source = DataListSingleton.GetInstance();
         }
-
         public void CreateOrUpdate(ForgeProductBindingModel model)
         {
             ForgeProduct tempForgeProduct = model.Id.HasValue ? null : new ForgeProduct { Id = 1 };
@@ -89,8 +88,6 @@ namespace ForgeShopListImplement.Implements
                         model.ForgeProductBillets[source.ForgeProductBillets[i].BilletId].Item2;
                         // из модели убираем эту запись, чтобы остались только не
                         // просмотренные
-
-
                         model.ForgeProductBillets.Remove(source.ForgeProductBillets[i].BilletId);
                     }
                     else

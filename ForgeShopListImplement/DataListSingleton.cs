@@ -10,6 +10,8 @@ namespace ForgeShopListImplement
         public List<Order> Orders { get; set; }
         public List<ForgeProduct> ForgeProducts { get; set; }
         public List<ForgeProductBillet> ForgeProductBillets { get; set; }
+        public List<Storage> Storages { get; set; }
+        public List<StorageBillet> StorageBillets { get; set; }
         public List<Client> Clients { get; set; }
         public List<Implementer> Implementers { get; set; }
         private DataListSingleton()
@@ -18,6 +20,8 @@ namespace ForgeShopListImplement
             Orders = new List<Order>();
             ForgeProducts = new List<ForgeProduct>();
             ForgeProductBillets = new List<ForgeProductBillet>();
+            Storages = new List<Storage>();
+            StorageBillets = new List<StorageBillet>();
             Clients = new List<Client>();
             Implementers = new List<Implementer>();
         }

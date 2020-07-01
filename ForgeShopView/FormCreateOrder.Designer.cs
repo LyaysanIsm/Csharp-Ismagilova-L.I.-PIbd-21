@@ -45,18 +45,18 @@
             this.labelforgeproduct.AutoSize = true;
             this.labelforgeproduct.Location = new System.Drawing.Point(17, 28);
             this.labelforgeproduct.Name = "labelforgeproduct";
-            this.labelforgeproduct.Size = new System.Drawing.Size(77, 13);
+            this.labelforgeproduct.Size = new System.Drawing.Size(54, 13);
             this.labelforgeproduct.TabIndex = 0;
-            this.labelforgeproduct.Text = "Forge Product:";
+            this.labelforgeproduct.Text = "Изделие:";
             // 
             // labelcount
             // 
             this.labelcount.AutoSize = true;
             this.labelcount.Location = new System.Drawing.Point(17, 94);
             this.labelcount.Name = "labelcount";
-            this.labelcount.Size = new System.Drawing.Size(38, 13);
+            this.labelcount.Size = new System.Drawing.Size(69, 13);
             this.labelcount.TabIndex = 1;
-            this.labelcount.Text = "Count:";
+            this.labelcount.Text = "Количество:";
             this.labelcount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // labelsum
@@ -64,9 +64,9 @@
             this.labelsum.AutoSize = true;
             this.labelsum.Location = new System.Drawing.Point(17, 130);
             this.labelsum.Name = "labelsum";
-            this.labelsum.Size = new System.Drawing.Size(31, 13);
+            this.labelsum.Size = new System.Drawing.Size(44, 13);
             this.labelsum.TabIndex = 2;
-            this.labelsum.Text = "Sum:";
+            this.labelsum.Text = "Сумма:";
             // 
             // ComboBoxForgeProduct
             // 
@@ -145,7 +145,7 @@
             this.Controls.Add(this.labelcount);
             this.Controls.Add(this.labelforgeproduct);
             this.Name = "FormCreateOrder";
-            this.Text = "Order";
+            this.Text = "Заказ";
             this.Load += new System.EventHandler(this.FormCreateOrder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

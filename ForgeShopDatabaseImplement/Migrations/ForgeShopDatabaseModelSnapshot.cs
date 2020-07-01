@@ -166,6 +166,47 @@ namespace ForgeShopDatabaseImplement.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.Storage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("StorageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Storages");
+                });
+
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.StorageBillet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BilletId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StorageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BilletId");
+
+                    b.HasIndex("StorageId");
+
+                    b.ToTable("StorageBillets");
+                });
+
             modelBuilder.Entity("ForgeShopDatabaseImplement.Models.ForgeProductBillet", b =>
                 {
                     b.HasOne("ForgeShopDatabaseImplement.Models.Billet", "Billet")
@@ -196,8 +237,23 @@ namespace ForgeShopDatabaseImplement.Migrations
                         .IsRequired();
 
                     b.HasOne("ForgeShopDatabaseImplement.Models.Implementer", "Implementer")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("ImplementerId");
+                });
+
+            modelBuilder.Entity("ForgeShopDatabaseImplement.Models.StorageBillet", b =>
+                {
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Billet", "Billet")
+                        .WithMany()
+                        .HasForeignKey("BilletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForgeShopDatabaseImplement.Models.Storage", "Storage")
+                        .WithMany("StorageBillets")
+                        .HasForeignKey("StorageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

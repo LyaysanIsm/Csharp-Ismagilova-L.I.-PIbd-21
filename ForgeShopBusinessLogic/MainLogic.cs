@@ -7,10 +7,12 @@ namespace ForgeShopBusinessLogic.BusinessLogics
     public class MainLogic
     {
         private readonly IOrderLogic orderLogic;
+        private readonly IStorageLogic storageLogic;
         private readonly object locker = new object();
-        public MainLogic(IOrderLogic orderLogic)
+        public MainLogic(IOrderLogic orderLogic, IStorageLogic storageLogic)
         {
             this.orderLogic = orderLogic;
+            this.storageLogic = storageLogic;
         }
         public void CreateOrder(CreateOrderBindingModel model)
         {
@@ -36,26 +38,36 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 {
                     throw new Exception("Не найден заказ");
                 }
-                if (order.Status != OrderStatus.Принят)
+                if (order.Status != OrderStatus.Принят && order.Status != OrderStatus.Требуются_заготовки)
                 {
-                    throw new Exception("Заказ не в статусе \"Принят\"");
+                    throw new Exception("Заказ не в статусе \"Принят\" или \"Требуются заготовки\"");
                 }
                 if (order.ImplementerId.HasValue)
                 {
                     throw new Exception("У заказа уже есть исполнитель");
                 }
-                orderLogic.CreateOrUpdate(new OrderBindingModel
+                var orderModel = new OrderBindingModel
                 {
                     Id = order.Id,
-                    ClientId = order.ClientId,
-                    ImplementerId = model.ImplementerId,
                     ForgeProductId = order.ForgeProductId,
                     Count = order.Count,
                     Sum = order.Sum,
-                    DateCreate = order.DateCreate,
-                    DateImplement = DateTime.Now,
-                    Status = OrderStatus.Выполняется
-                });
+                    ClientId = order.ClientId,
+                    ClientFIO = order.ClientFIO,
+                    DateCreate = order.DateCreate
+                };
+                try
+                {
+                    storageLogic.RemoveFromStorage(order);
+                    orderModel.DateImplement = DateTime.Now;
+                    orderModel.Status = OrderStatus.Выполняется;
+                    orderModel.ImplementerId = model.ImplementerId;
+                }
+                catch
+                {
+                    orderModel.Status = OrderStatus.Требуются_заготовки;
+                }
+                orderLogic.CreateOrUpdate(orderModel);
             }
         }
         public void FinishOrder(ChangeStatusBindingModel model)
@@ -111,6 +123,10 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 DateImplement = order.DateImplement,
                 Status = OrderStatus.Оплачен
             });
+        }
+        public void FillStorage(StorageBilletBindingModel model)
+        {
+            storageLogic.FillStorage(model);
         }
     }
 }

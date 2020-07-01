@@ -11,12 +11,10 @@ namespace ForgeShopListImplement.Implements
     public class ImplementerLogic : IImplementerLogic
     {
         private readonly DataListSingleton source;
-
         public ImplementerLogic()
         {
             source = DataListSingleton.GetInstance();
         }
-
         public void CreateOrUpdate(ImplementerBindingModel model)
         {
             Implementer tempImplementer = new Implementer { Id = 1 };

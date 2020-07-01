@@ -62,35 +62,60 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 {
                     Worksheet = worksheetPart.Worksheet,
                     CellFromName = "A1",
-                    CellToName = "C1"
+                    CellToName = "E1"
                 });
 
                 uint rowIndex = 2;
-                foreach (var date in info.Orders)
+                if (info.Orders != null)
                 {
-                    decimal GenSum = 0;
-
-                    InsertCellInWorksheet(new ExcelCellParameters
+                    foreach (var date in info.Orders)
                     {
-                        Worksheet = worksheetPart.Worksheet,
-                        ShareStringPart = shareStringPart,
-                        ColumnName = "A",
-                        RowIndex = rowIndex,
-                        Text = date.Key.ToShortDateString(),
-                        StyleIndex = 0U
-                    });
-                    rowIndex++;
+                        decimal GenSum = 0;
 
-                    foreach (var order in date)
-                    {
                         InsertCellInWorksheet(new ExcelCellParameters
                         {
                             Worksheet = worksheetPart.Worksheet,
                             ShareStringPart = shareStringPart,
-                            ColumnName = "B",
+                            ColumnName = "A",
                             RowIndex = rowIndex,
-                            Text = order.ForgeProductName,
-                            StyleIndex = 1U
+                            Text = date.Key.ToShortDateString(),
+                            StyleIndex = 0U
+                        });
+                        rowIndex++;
+
+                        foreach (var order in date)
+                        {
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "B",
+                                RowIndex = rowIndex,
+                                Text = order.ForgeProductName,
+                                StyleIndex = 1U
+                            });
+
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "C",
+                                RowIndex = rowIndex,
+                                Text = order.Sum.ToString(),
+                                StyleIndex = 1U
+                            });
+                            GenSum += order.Sum;
+                            rowIndex++;
+                        }
+
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = "Общая сумма:",
+                            StyleIndex = 0U
                         });
 
                         InsertCellInWorksheet(new ExcelCellParameters
@@ -99,33 +124,76 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                             ShareStringPart = shareStringPart,
                             ColumnName = "C",
                             RowIndex = rowIndex,
-                            Text = order.Sum.ToString(),
-                            StyleIndex = 1U
+                            Text = GenSum.ToString(),
+                            StyleIndex = 0U
                         });
-                        GenSum += order.Sum;
                         rowIndex++;
                     }
-
-                    InsertCellInWorksheet(new ExcelCellParameters
+                }
+                else if (info.Storages != null)
+                {
+                    foreach (var storage in info.Storages)
                     {
-                        Worksheet = worksheetPart.Worksheet,
-                        ShareStringPart = shareStringPart,
-                        ColumnName = "A",
-                        RowIndex = rowIndex,
-                        Text = "General Sum:",
-                        StyleIndex = 0U
-                    });
+                        int billetsSum = 0;
 
-                    InsertCellInWorksheet(new ExcelCellParameters
-                    {
-                        Worksheet = worksheetPart.Worksheet,
-                        ShareStringPart = shareStringPart,
-                        ColumnName = "C",
-                        RowIndex = rowIndex,
-                        Text = GenSum.ToString(),
-                        StyleIndex = 0U
-                    });
-                    rowIndex++;
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = storage.StorageName,
+                            StyleIndex = 0U
+                        });
+
+                        rowIndex++;
+
+                        foreach (var billet in storage.StorageBillets)
+                        {
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "B",
+                                RowIndex = rowIndex,
+                                Text = billet.BilletName,
+                                StyleIndex = 1U
+                            });
+
+                            InsertCellInWorksheet(new ExcelCellParameters
+                            {
+                                Worksheet = worksheetPart.Worksheet,
+                                ShareStringPart = shareStringPart,
+                                ColumnName = "C",
+                                RowIndex = rowIndex,
+                                Text = billet.Count.ToString(),
+                                StyleIndex = 1U
+                            });
+                            billetsSum += billet.Count;
+                            rowIndex++;
+                        }
+
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "A",
+                            RowIndex = rowIndex,
+                            Text = "Итого:",
+                            StyleIndex = 0U
+                        });
+
+                        InsertCellInWorksheet(new ExcelCellParameters
+                        {
+                            Worksheet = worksheetPart.Worksheet,
+                            ShareStringPart = shareStringPart,
+                            ColumnName = "C",
+                            RowIndex = rowIndex,
+                            Text = billetsSum.ToString(),
+                            StyleIndex = 0U
+                        });
+                        rowIndex++;
+                    }
                 }
                 workbookpart.Workbook.Save();
             }
