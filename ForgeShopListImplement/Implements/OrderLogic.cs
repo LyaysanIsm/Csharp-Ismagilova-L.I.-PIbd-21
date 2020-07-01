@@ -85,14 +85,13 @@ namespace ForgeShopListImplement.Implements
                             result.Add(CreateViewModel(order));
                             continue;
                         }
-                        if (model.Status == order.Status)
-                            if (model.NotEnoughBilletsOrders.HasValue &&
+                        if (model.NotEnoughBilletsOrders.HasValue &&
                                 model.NotEnoughBilletsOrders.Value &&
                                 order.Status == OrderStatus.Требуются_заготовки)
-                            {
-                                result.Add(CreateViewModel(order));
-                                continue;
-                            }
+                        {
+                            result.Add(CreateViewModel(order));
+                            continue;
+                        }
                         result.Add(CreateViewModel(order));
                         break;
                     }

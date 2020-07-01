@@ -39,29 +39,40 @@ namespace ForgeShopBusinessLogic.BusinessLogics
         /// Иммитация работы исполнителя
         private async void WorkerWorkAsync(ImplementerViewModel implementer, List<OrderViewModel> orders)
         {
+            // вначале обрабатываются заказы со статусом «Выполняются»            
             // ищем заказы, которые уже в работе (вдруг исполнителя прервали)
-            var runOrders = await Task.Run(() => orderLogic.Read(new OrderBindingModel { ImplementerId = implementer.Id }));
+            var runOrders = await Task.Run(() => orderLogic.Read(new OrderBindingModel
+            {
+                ImplementerId = implementer.Id
+            }));
 
             foreach (var order in runOrders)
             {
                 // делаем работу заново
                 Thread.Sleep(implementer.WorkingTime * rnd.Next(1, 5) * order.Count);
-                mainLogic.FinishOrder(new ChangeStatusBindingModel { OrderId = order.Id });
-
+                mainLogic.FinishOrder(new ChangeStatusBindingModel
+                {
+                    OrderId = order.Id
+                });
                 // отдыхаем
                 Thread.Sleep(implementer.PauseTime);
             }
-            var notEnoughBilletsOrders = orders
-              .Where(x => x.Status == OrderStatus.Требуются_заготовки)
-              .Select(x => x)
-              .ToList();
+
+            // затем заказы со статусом «Требуются заготовки» (вдруг заготовки подвезли)
+            var notEnoughBilletsOrders = orderLogic.Read(new OrderBindingModel
+            {
+                NotEnoughBilletsOrders = true
+            });
             orders.RemoveAll(x => notEnoughBilletsOrders.Contains(x));
-            DoWork(implementer, notEnoughBilletsOrders);
+            this.DoWork(implementer, notEnoughBilletsOrders);
+
+            // и только потом новые заказы.
             await Task.Run(() =>
             {
-                DoWork(implementer, orders);
+                this.DoWork(implementer, orders);
             });
         }
+
         private void DoWork(ImplementerViewModel implementer, List<OrderViewModel> orders)
         {
             foreach (var order in orders)
@@ -69,12 +80,16 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 // пытаемся назначить заказ на исполнителя
                 try
                 {
-                    mainLogic.TakeOrderInWork(new ChangeStatusBindingModel { OrderId = order.Id, ImplementerId = implementer.Id });
-                    Boolean isNotEnoughMaterials = orderLogic.Read(new OrderBindingModel
+                    mainLogic.TakeOrderInWork(new ChangeStatusBindingModel
+                    {
+                        OrderId = order.Id,
+                        ImplementerId = implementer.Id
+                    });
+                    Boolean isNotEnoughBillets = orderLogic.Read(new OrderBindingModel
                     {
                         Id = order.Id
                     }).FirstOrDefault().Status == OrderStatus.Требуются_заготовки;
-                    if (isNotEnoughMaterials)
+                    if (isNotEnoughBillets)
                     {
                         continue;
                     }
@@ -83,10 +98,8 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                     mainLogic.FinishOrder(new ChangeStatusBindingModel
                     {
                         OrderId = order.Id,
-                        ImplementerId = implementer.Id,
-                        ImplementerFIO = implementer.ImplementerFIO
+                        ImplementerId = implementer.Id
                     });
-
                     // отдыхаем
                     Thread.Sleep(implementer.PauseTime);
                 }
