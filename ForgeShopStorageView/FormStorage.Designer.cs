@@ -62,7 +62,7 @@
             this.BilletsGroupBox.Size = new System.Drawing.Size(405, 362);
             this.BilletsGroupBox.TabIndex = 2;
             this.BilletsGroupBox.TabStop = false;
-            this.BilletsGroupBox.Text = "Компоненты";
+            this.BilletsGroupBox.Text = "Заготовки";
             // 
             // dataGridView
             // 

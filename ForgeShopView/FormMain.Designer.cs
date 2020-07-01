@@ -81,36 +81,36 @@
             // BilletsToolStripMenuItem
             // 
             this.BilletsToolStripMenuItem.Name = "BilletsToolStripMenuItem";
-            this.BilletsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.BilletsToolStripMenuItem.Text = "Billets";
+            this.BilletsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.BilletsToolStripMenuItem.Text = "Заготовки";
             this.BilletsToolStripMenuItem.Click += new System.EventHandler(this.BilletsToolStripMenuItem_Click);
             // 
             // ForgeProductsToolStripMenuItem
             // 
             this.ForgeProductsToolStripMenuItem.Name = "ForgeProductsToolStripMenuItem";
-            this.ForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ForgeProductsToolStripMenuItem.Text = "Forge Products";
+            this.ForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.ForgeProductsToolStripMenuItem.Text = "Изделия";
             this.ForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ForgeProductsToolStripMenuItem_Click);
             // 
             // ClientsToolStripMenuItem
             // 
             this.ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem";
-            this.ClientsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ClientsToolStripMenuItem.Text = "Clients";
+            this.ClientsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.ClientsToolStripMenuItem.Text = "Клиенты";
             this.ClientsToolStripMenuItem.Click += new System.EventHandler(this.ClientsToolStripMenuItem_Click);
             // 
             // ImplementersToolStripMenuItem
             // 
             this.ImplementersToolStripMenuItem.Name = "ImplementersToolStripMenuItem";
-            this.ImplementersToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ImplementersToolStripMenuItem.Text = "Implementers";
+            this.ImplementersToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.ImplementersToolStripMenuItem.Text = "Исполнители";
             this.ImplementersToolStripMenuItem.Click += new System.EventHandler(this.ImplementersToolStripMenuItem_Click);
             // 
             // StoragesToolStripMenuItem
             // 
             this.StoragesToolStripMenuItem.Name = "StoragesToolStripMenuItem";
-            this.StoragesToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.StoragesToolStripMenuItem.Text = "Storages";
+            this.StoragesToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.StoragesToolStripMenuItem.Text = "Склады";
             this.StoragesToolStripMenuItem.Click += new System.EventHandler(this.StoragesToolStripMenuItem_Click);
             // 
             // отчетыToolStripMenuItem
@@ -129,43 +129,43 @@
             // ListOfForgeProductsToolStripMenuItem
             // 
             this.ListOfForgeProductsToolStripMenuItem.Name = "ListOfForgeProductsToolStripMenuItem";
-            this.ListOfForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListOfForgeProductsToolStripMenuItem.Text = "List of ForgeProducts";
+            this.ListOfForgeProductsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListOfForgeProductsToolStripMenuItem.Text = "Список изделий";
             this.ListOfForgeProductsToolStripMenuItem.Click += new System.EventHandler(this.ListOfForgeProductsToolStripMenuItem_Click);
             // 
             // ListOfOrdersToolStripMenuItem
             // 
             this.ListOfOrdersToolStripMenuItem.Name = "ListOfOrdersToolStripMenuItem";
-            this.ListOfOrdersToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListOfOrdersToolStripMenuItem.Text = "List of Orders";
+            this.ListOfOrdersToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListOfOrdersToolStripMenuItem.Text = "Список заказов";
             this.ListOfOrdersToolStripMenuItem.Click += new System.EventHandler(this.ListOfOrdersToolStripMenuItem_Click);
             // 
             // ListForgeProductswithBilletsToolStripMenuItem
             // 
             this.ListForgeProductswithBilletsToolStripMenuItem.Name = "ListForgeProductswithBilletsToolStripMenuItem";
-            this.ListForgeProductswithBilletsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListForgeProductswithBilletsToolStripMenuItem.Text = "List ForgeProducts with Billets";
+            this.ListForgeProductswithBilletsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListForgeProductswithBilletsToolStripMenuItem.Text = "Список изделий по заготовкам";
             this.ListForgeProductswithBilletsToolStripMenuItem.Click += new System.EventHandler(this.ListForgeProductswithBilletsToolStripMenuItem_Click);
             // 
             // ListOfBilletsToolStripMenuItem
             // 
             this.ListOfBilletsToolStripMenuItem.Name = "ListOfBilletsToolStripMenuItem";
-            this.ListOfBilletsToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListOfBilletsToolStripMenuItem.Text = "List Of Billets";
+            this.ListOfBilletsToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListOfBilletsToolStripMenuItem.Text = "Список заготовок";
             this.ListOfBilletsToolStripMenuItem.Click += new System.EventHandler(this.ListOfBilletsToolStripMenuItem_Click);
             // 
             // ListOfBilletsToStoragesToolStripMenuItem
             // 
             this.ListOfBilletsToStoragesToolStripMenuItem.Name = "ListOfBilletsToStoragesToolStripMenuItem";
-            this.ListOfBilletsToStoragesToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListOfBilletsToStoragesToolStripMenuItem.Text = "List of Billets to Storages";
+            this.ListOfBilletsToStoragesToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListOfBilletsToStoragesToolStripMenuItem.Text = "Список заготовок на складах";
             this.ListOfBilletsToStoragesToolStripMenuItem.Click += new System.EventHandler(this.ListOfBilletsToStoragesToolStripMenuItem_Click);
             // 
             // ListStoragesToolStripMenuItem
             // 
             this.ListStoragesToolStripMenuItem.Name = "ListStoragesToolStripMenuItem";
-            this.ListStoragesToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.ListStoragesToolStripMenuItem.Text = "List Storages";
+            this.ListStoragesToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ListStoragesToolStripMenuItem.Text = "Список складов";
             this.ListStoragesToolStripMenuItem.Click += new System.EventHandler(this.ListStoragesToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -183,8 +183,8 @@
             // FillStoragesToolStripMenuItem
             // 
             this.FillStoragesToolStripMenuItem.Name = "FillStoragesToolStripMenuItem";
-            this.FillStoragesToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.FillStoragesToolStripMenuItem.Text = "Fill Storages";
+            this.FillStoragesToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.FillStoragesToolStripMenuItem.Text = "Пополнение складов";
             this.FillStoragesToolStripMenuItem.Click += new System.EventHandler(this.FillStoragesToolStripMenuItem_Click);
             // 
             // dataGridView
@@ -227,7 +227,7 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "FormMain";
-            this.Text = "ForgeShop";
+            this.Text = "Кузнечная мастерская";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

@@ -60,15 +60,17 @@ namespace ForgeShopFileImplement.Implements
         public List<OrderViewModel> Read(OrderBindingModel model)
         {
             return source.Orders
-             .Where(rec => model == null || rec.Id == model.Id || (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
-             || (model.ClientId.HasValue && rec.ClientId == model.ClientId)
-             || model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue
-             || model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется
-             || model.NotEnoughBilletsOrders.HasValue && model.NotEnoughBilletsOrders.Value && rec.Status == OrderStatus.Требуются_материалы)
+             .Where(rec => model == null ||
+                (model.Id != null && rec.Id == model.Id) ||
+                (model.DateFrom != null && model.DateTo != null && rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo) ||
+                (rec.ClientId == model.ClientId) ||
+                (model.FreeOrders.HasValue && model.FreeOrders.Value && !rec.ImplementerId.HasValue) ||
+                (model.ImplementerId.HasValue && rec.ImplementerId == model.ImplementerId && rec.Status == OrderStatus.Выполняется) ||
+                (model.NotEnoughBilletsOrders.HasValue && model.NotEnoughBilletsOrders.Value && rec.Status == OrderStatus.Требуются_заготовки))
             .Select(rec => new OrderViewModel
             {
                 Id = rec.Id,
-                ForgeProductName = GetForgeProductName(rec.ForgeProductId),
+                ForgeProductName = source.ForgeProducts.FirstOrDefault(recC => recC.Id == rec.ForgeProductId)?.ForgeProductName,
                 ClientId = rec.ClientId,
                 ClientFIO = source.Clients.FirstOrDefault(recC => recC.Id == rec.ClientId)?.ClientFIO,
                 ImplementerFIO = source.Implementers.FirstOrDefault(recC => recC.Id == rec.ImplementerId)?.ImplementerFIO,
@@ -79,14 +81,6 @@ namespace ForgeShopFileImplement.Implements
                 DateImplement = rec.DateImplement
             })
             .ToList();
-        }
-
-        private string GetForgeProductName(int id)
-        {
-            string name = "";
-            var ForgeProduct = source.ForgeProducts.FirstOrDefault(x => x.Id == id);
-            name = ForgeProduct != null ? ForgeProduct.ForgeProductName : "";
-            return name;
         }
     }
 }

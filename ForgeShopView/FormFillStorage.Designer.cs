@@ -43,27 +43,27 @@
             this.labelstorage.AutoSize = true;
             this.labelstorage.Location = new System.Drawing.Point(15, 24);
             this.labelstorage.Name = "labelstorage";
-            this.labelstorage.Size = new System.Drawing.Size(47, 13);
+            this.labelstorage.Size = new System.Drawing.Size(41, 13);
             this.labelstorage.TabIndex = 0;
-            this.labelstorage.Text = "Storage:";
+            this.labelstorage.Text = "Склад:";
             // 
             // labelbillet
             // 
             this.labelbillet.AutoSize = true;
             this.labelbillet.Location = new System.Drawing.Point(15, 58);
             this.labelbillet.Name = "labelbillet";
-            this.labelbillet.Size = new System.Drawing.Size(32, 13);
+            this.labelbillet.Size = new System.Drawing.Size(63, 13);
             this.labelbillet.TabIndex = 1;
-            this.labelbillet.Text = "Billet:";
+            this.labelbillet.Text = "Заготовка:";
             // 
             // labelcount
             // 
             this.labelcount.AutoSize = true;
             this.labelcount.Location = new System.Drawing.Point(15, 91);
             this.labelcount.Name = "labelcount";
-            this.labelcount.Size = new System.Drawing.Size(38, 13);
+            this.labelcount.Size = new System.Drawing.Size(69, 13);
             this.labelcount.TabIndex = 2;
-            this.labelcount.Text = "Count:";
+            this.labelcount.Text = "Количество:";
             // 
             // textBoxcount
             // 
@@ -122,7 +122,7 @@
             this.Controls.Add(this.labelbillet);
             this.Controls.Add(this.labelstorage);
             this.Name = "FormFillStorage";
-            this.Text = "FillStorage";
+            this.Text = "Пополнение склада";
             this.Load += new System.EventHandler(this.FormFillStorage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

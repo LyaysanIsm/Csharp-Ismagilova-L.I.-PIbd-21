@@ -14,7 +14,6 @@ namespace ForgeShopListImplement.Implements
         {
             source = DataListSingleton.GetInstance();
         }
-
         public void CreateOrUpdate(BilletBindingModel model)
         {
             Billet tempBillet = model.Id.HasValue ? null : new Billet
@@ -26,7 +25,7 @@ namespace ForgeShopListImplement.Implements
                 if (billet.BilletName == model.BilletName && billet.Id !=
                model.Id)
                 {
-                    throw new Exception("Уже есть компонент с таким названием");
+                    throw new Exception("Уже есть заготовка с таким названием");
                 }
                 if (!model.Id.HasValue && billet.Id >= tempBillet.Id)
                 {
@@ -50,7 +49,6 @@ namespace ForgeShopListImplement.Implements
                 source.Billets.Add(CreateModel(model, tempBillet));
             }
         }
-
         public void Delete(BilletBindingModel model)
         {
             for (int i = 0; i < source.Billets.Count; ++i)
@@ -90,7 +88,6 @@ namespace ForgeShopListImplement.Implements
         {
             return new BilletViewModel
             {
-
                 Id = billet.Id,
                 BilletName = billet.BilletName
             };

@@ -67,21 +67,21 @@
             // 
             // Columnstorage
             // 
-            this.Columnstorage.HeaderText = "Storage";
+            this.Columnstorage.HeaderText = "Склад";
             this.Columnstorage.MinimumWidth = 6;
             this.Columnstorage.Name = "Columnstorage";
             this.Columnstorage.Width = 125;
             // 
             // Columnbillet
             // 
-            this.Columnbillet.HeaderText = "Billet";
+            this.Columnbillet.HeaderText = "Заготовка";
             this.Columnbillet.MinimumWidth = 6;
             this.Columnbillet.Name = "Columnbillet";
             this.Columnbillet.Width = 125;
             // 
             // Columncount
             // 
-            this.Columncount.HeaderText = "Count";
+            this.Columncount.HeaderText = "Количество";
             this.Columncount.MinimumWidth = 6;
             this.Columncount.Name = "Columncount";
             this.Columncount.Width = 125;
@@ -95,7 +95,7 @@
             this.Controls.Add(this.ButtonSaveToExcel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormReportStorageBillet";
-            this.Text = "Report the list billets to storages";
+            this.Text = "Отчет по заготовкам на складах";
             this.Load += new System.EventHandler(this.FormReportStorageBillet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

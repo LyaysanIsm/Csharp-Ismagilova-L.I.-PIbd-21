@@ -24,11 +24,15 @@ namespace ForgeShopListImplement.Implements
             {
                 if (!model.Id.HasValue && client.Id >= tempClient.Id)
                 {
-                    tempClient.Id = tempClient.Id + 1;
+                    tempClient.Id = client.Id + 1;
                 }
                 else if (model.Id.HasValue && client.Id == model.Id)
                 {
                     tempClient = client;
+                }
+                if (!model.Id.HasValue && model.Email == client.Email)
+                {
+                    throw new Exception("Данный логин уже занят");
                 }
             }
             if (model.Id.HasValue)

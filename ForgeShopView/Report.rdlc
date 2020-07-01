@@ -48,7 +48,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>List of ForgeProducts with Billets</Value>
+                    <Value>Список изделий по заготовкам</Value>
                     <Style>
                       <FontFamily>Times New Roman</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -100,7 +100,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ForgeProduct</Value>
+                                  <Value>Изделие</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -128,7 +128,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Billet</Value>
+                                  <Value>Заготовка</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -157,7 +157,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Count</Value>
+                                  <Value>Количество</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

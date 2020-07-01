@@ -8,7 +8,7 @@ namespace ForgeShopBusinessLogic.ViewModels
     public class BilletViewModel
     {
         public int Id { get; set; }
-        [DisplayName("Название компонента")]
+        [DisplayName("Название заготовки")]
         public string BilletName { get; set; }
     }
 }

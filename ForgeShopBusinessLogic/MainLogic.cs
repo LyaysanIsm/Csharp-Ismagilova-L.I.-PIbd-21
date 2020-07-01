@@ -38,9 +38,9 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 {
                     throw new Exception("Не найден заказ");
                 }
-                if (order.Status != OrderStatus.Принят && order.Status != OrderStatus.Требуются_материалы)
+                if (order.Status != OrderStatus.Принят && order.Status != OrderStatus.Требуются_заготовки)
                 {
-                    throw new Exception("Заказ не в статусе \"Принят\" или \"Требуются материалы\"");
+                    throw new Exception("Заказ не в статусе \"Принят\" или \"Требуются заготовки\"");
                 }
                 if (order.ImplementerId.HasValue)
                 {
@@ -65,7 +65,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 }
                 catch
                 {
-                    orderModel.Status = OrderStatus.Требуются_материалы;
+                    orderModel.Status = OrderStatus.Требуются_заготовки;
                 }
                 orderLogic.CreateOrUpdate(orderModel);
             }

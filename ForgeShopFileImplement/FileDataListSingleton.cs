@@ -109,6 +109,7 @@ namespace ForgeShopFileImplement
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
                         ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
+                        ImplementerId = Convert.ToInt32(elem.Attribute("ImplementerId").Value),
                         ForgeProductId = Convert.ToInt32(elem.Element("ForgeProductId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
@@ -264,6 +265,7 @@ namespace ForgeShopFileImplement
                     xElement.Add(new XElement("Order",
                     new XAttribute("Id", order.Id),
                     new XElement("ClientId", order.ClientId),
+                    new XElement("ImplementerId", order.ImplementerId),
                     new XElement("ForgeProductId", order.ForgeProductId),
                     new XElement("Count", order.Count),
                     new XElement("Sum", order.Sum),

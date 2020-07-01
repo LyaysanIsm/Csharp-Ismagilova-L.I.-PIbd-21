@@ -71,7 +71,7 @@
             this.Controls.Add(this.ButtonToPdf);
             this.Controls.Add(this.ButtonMake);
             this.Name = "FormReportForgeProductBillets";
-            this.Text = "Report ForgeProducts with Billets";
+            this.Text = "Отчет по изделиям с заготовками";
             this.ResumeLayout(false);
 
         }

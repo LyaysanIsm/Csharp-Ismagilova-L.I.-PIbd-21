@@ -41,9 +41,9 @@
             this.labelname.AutoSize = true;
             this.labelname.Location = new System.Drawing.Point(32, 13);
             this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(38, 13);
+            this.labelname.Size = new System.Drawing.Size(60, 13);
             this.labelname.TabIndex = 0;
-            this.labelname.Text = "Name:";
+            this.labelname.Text = "Название:";
             // 
             // textBoxname
             // 
@@ -92,7 +92,7 @@
             this.Controls.Add(this.textBoxname);
             this.Controls.Add(this.labelname);
             this.Name = "FormStorage";
-            this.Text = "Storage";
+            this.Text = "Склад";
             this.Load += new System.EventHandler(this.FormStorage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

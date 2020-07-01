@@ -90,7 +90,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "The list of forgeproducts",
+                Title = "Список изделий",
                 ForgeProducts = forgeproductLogic.Read(null)
             });
         }
@@ -103,7 +103,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "The list of orders",
+                Title = "Список заказов",
                 Orders = GetOrders(model)
             });
         }
@@ -116,7 +116,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "The list forgeproducts with billets",
+                Title = "Список изделий по заготовкам",
                 ForgeProductBillets = GetForgeProductBillet()
             });
         }
@@ -125,7 +125,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Title = "The list of storages",
+                Title = "Список складов",
                 ForgeProducts = null,
                 Storages = storageLogic.GetList()
             });
@@ -136,7 +136,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToExcel.CreateDoc(new ExcelInfo
             {
                 FileName = model.FileName,
-                Title = "The list billets to storages",
+                Title = "Список заготовок на складах",
                 Orders = null,
                 Storages = storageLogic.GetList()
             });
@@ -146,7 +146,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
             SaveToPdf.CreateDoc(new PdfInfo
             {
                 FileName = model.FileName,
-                Title = "The list of billets",
+                Title = "Список заготовок",
                 ForgeProductBillets = null,
                 StorageBillets = GetStorageBillets()
             });

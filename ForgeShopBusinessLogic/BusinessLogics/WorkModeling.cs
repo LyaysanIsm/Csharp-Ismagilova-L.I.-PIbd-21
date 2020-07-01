@@ -52,7 +52,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                 Thread.Sleep(implementer.PauseTime);
             }
             var notEnoughBilletsOrders = orders
-              .Where(x => x.Status == OrderStatus.Требуются_материалы)
+              .Where(x => x.Status == OrderStatus.Требуются_заготовки)
               .Select(x => x)
               .ToList();
             orders.RemoveAll(x => notEnoughBilletsOrders.Contains(x));
@@ -73,7 +73,7 @@ namespace ForgeShopBusinessLogic.BusinessLogics
                     Boolean isNotEnoughMaterials = orderLogic.Read(new OrderBindingModel
                     {
                         Id = order.Id
-                    }).FirstOrDefault().Status == OrderStatus.Требуются_материалы;
+                    }).FirstOrDefault().Status == OrderStatus.Требуются_заготовки;
                     if (isNotEnoughMaterials)
                     {
                         continue;

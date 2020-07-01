@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.ReportStorageBilletViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ButtonToPdf = new System.Windows.Forms.Button();
             this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -42,9 +41,10 @@
             // 
             // ButtonToPdf
             // 
-            this.ButtonToPdf.Location = new System.Drawing.Point(726, 12);
+            this.ButtonToPdf.Location = new System.Drawing.Point(544, 10);
+            this.ButtonToPdf.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ButtonToPdf.Name = "ButtonToPdf";
-            this.ButtonToPdf.Size = new System.Drawing.Size(174, 38);
+            this.ButtonToPdf.Size = new System.Drawing.Size(130, 31);
             this.ButtonToPdf.TabIndex = 1;
             this.ButtonToPdf.Text = "В Pdf";
             this.ButtonToPdf.UseVisualStyleBackColor = true;
@@ -53,22 +53,24 @@
             // reportViewer
             // 
             this.reportViewer.LocalReport.ReportEmbeddedResource = "ForgeShopView.ReportStorageBillet.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(10, 61);
+            this.reportViewer.Location = new System.Drawing.Point(8, 50);
+            this.reportViewer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(889, 402);
+            this.reportViewer.Size = new System.Drawing.Size(667, 327);
             this.reportViewer.TabIndex = 2;
             this.reportViewer.Load += new System.EventHandler(this.ReportViewer_Load);
             // 
             // FormReportBillet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 467);
+            this.ClientSize = new System.Drawing.Size(684, 379);
             this.Controls.Add(this.reportViewer);
             this.Controls.Add(this.ButtonToPdf);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormReportBillet";
-            this.Text = "Report the list of billets";
+            this.Text = "Отчет по заготовкам";
             ((System.ComponentModel.ISupportInitialize)(this.ReportStorageBilletViewModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 

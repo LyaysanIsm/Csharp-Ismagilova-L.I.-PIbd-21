@@ -22,7 +22,7 @@ namespace ForgeShopStorageView
         private void FormStorage_Load(object sender, EventArgs e)
         {
             dataGridView.Columns.Add("Id", "Id");
-            dataGridView.Columns.Add("Компонент", "Компонент");
+            dataGridView.Columns.Add("Заготовка", "Заготовка");
             dataGridView.Columns.Add("Количество", "Количество");
             dataGridView.Columns[0].Visible = false;
             dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

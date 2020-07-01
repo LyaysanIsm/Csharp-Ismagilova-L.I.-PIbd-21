@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>List of Billets to Storages</Value>
+                <Value>Список заготовок на складах</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -60,7 +60,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Billet</Value>
+                              <Value>Заготовка</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -90,7 +90,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Storage</Value>
+                              <Value>Склад</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -120,7 +120,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Count</Value>
+                              <Value>Количество</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>

@@ -88,7 +88,7 @@ namespace ForgeShopListImplement.Implements
                         if (model.Status == order.Status)
                             if (model.NotEnoughBilletsOrders.HasValue &&
                                 model.NotEnoughBilletsOrders.Value &&
-                                order.Status == OrderStatus.Требуются_материалы)
+                                order.Status == OrderStatus.Требуются_заготовки)
                             {
                                 result.Add(CreateViewModel(order));
                                 continue;
@@ -125,10 +125,34 @@ namespace ForgeShopListImplement.Implements
                     break;
                 }
             }
+            string ClientFIO = "";
+            for (int i = 0; i < source.Clients.Count; i++)
+            {
+                if (source.Clients[i].Id == Order.ClientId)
+                {
+                    ClientFIO = source.Clients[i].ClientFIO;
+                    break;
+                }
+            }
+            string ImplementerFIO = "";
+            if (Order.ImplementerId.HasValue)
+            {
+                for (int i = 0; i < source.Implementers.Count; i++)
+                {
+                    if (source.Implementers[i].Id == Order.ImplementerId)
+                    {
+                        ImplementerFIO = source.Implementers[i].ImplementerFIO;
+                        break;
+                    }
+                }
+            }
             return new OrderViewModel
             {
                 Id = Order.Id,
                 ClientId = Order.ClientId,
+                ClientFIO = ClientFIO,
+                ImplementerId = Order.ImplementerId,
+                ImplementerFIO = ImplementerFIO,
                 ForgeProductName = ForgeProductName,
                 Count = Order.Count,
                 Sum = Order.Sum,

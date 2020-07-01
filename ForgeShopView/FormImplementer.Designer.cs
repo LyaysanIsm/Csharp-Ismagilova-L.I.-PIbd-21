@@ -30,8 +30,8 @@
         {
             this.labelFIO = new System.Windows.Forms.Label();
             this.textBoxFIO = new System.Windows.Forms.TextBox();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.ButtonSave = new System.Windows.Forms.Button();
+            this.ButtonCancel = new System.Windows.Forms.Button();
             this.textBoxWorkingTime = new System.Windows.Forms.TextBox();
             this.labelWorkingTime = new System.Windows.Forms.Label();
             this.textBoxPauseTime = new System.Windows.Forms.TextBox();
@@ -56,27 +56,27 @@
             this.textBoxFIO.Size = new System.Drawing.Size(245, 20);
             this.textBoxFIO.TabIndex = 1;
             // 
-            // buttonSave
+            // ButtonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(189, 93);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(89, 29);
-            this.buttonSave.TabIndex = 2;
-            this.buttonSave.Text = "Сохранить";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.ButtonSave.Location = new System.Drawing.Point(189, 93);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(89, 29);
+            this.ButtonSave.TabIndex = 2;
+            this.ButtonSave.Text = "Сохранить";
+            this.ButtonSave.UseVisualStyleBackColor = true;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // buttonCancel
+            // ButtonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(282, 93);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(82, 29);
-            this.buttonCancel.TabIndex = 3;
-            this.buttonCancel.Text = "Отменить";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.ButtonCancel.Location = new System.Drawing.Point(282, 93);
+            this.ButtonCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonCancel.Name = "ButtonCancel";
+            this.ButtonCancel.Size = new System.Drawing.Size(82, 29);
+            this.ButtonCancel.TabIndex = 3;
+            this.ButtonCancel.Text = "Отменить";
+            this.ButtonCancel.UseVisualStyleBackColor = true;
+            this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // textBoxWorkingTime
             // 
@@ -123,8 +123,8 @@
             this.Controls.Add(this.labelPauseTime);
             this.Controls.Add(this.textBoxWorkingTime);
             this.Controls.Add(this.labelWorkingTime);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.ButtonCancel);
+            this.Controls.Add(this.ButtonSave);
             this.Controls.Add(this.textBoxFIO);
             this.Controls.Add(this.labelFIO);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -138,8 +138,8 @@
         #endregion
         private System.Windows.Forms.Label labelFIO;
         private System.Windows.Forms.TextBox textBoxFIO;
-        private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button ButtonSave;
+        private System.Windows.Forms.Button ButtonCancel;
         private System.Windows.Forms.TextBox textBoxWorkingTime;
         private System.Windows.Forms.Label labelWorkingTime;
         private System.Windows.Forms.TextBox textBoxPauseTime;

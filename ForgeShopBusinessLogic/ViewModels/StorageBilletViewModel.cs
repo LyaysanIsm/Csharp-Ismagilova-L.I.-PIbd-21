@@ -13,7 +13,7 @@ namespace ForgeShopBusinessLogic.ViewModels
         public int BilletId { get; set; }
         [DisplayName("Название склада")]
         public string StorageName { get; set; }
-        [DisplayName("Название компонента")]
+        [DisplayName("Название заготовки")]
         public string BilletName { get; set; }
         [DisplayName("Количество")]
         public int Count { get; set; }
